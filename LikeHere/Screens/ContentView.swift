@@ -8,13 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    var login:Bool = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-        //Register
-        Text("Register")
-            .font(.custom("Comfortaa Regular", size: 36))
-            .tracking(-0.54)
+        TabView{
+            NavigationView{
+                Text("Hello World")
+            }
+            .tabItem {
+                Image(systemName: "book.fill")
+                Text("Feed")
+            }
+            NavigationView{
+                Text("Hello World")
+            }
+            .tabItem {
+                Image(systemName: "magnifyingglass")
+                Text("Browse")
+            }
+            NavigationView{
+                Text("Hello World")
+            }
+            .tabItem {
+                Image(systemName: "square.and.arrow.up.fill")
+                Text("Upload")
+            }
+            NavigationView{
+                Text("Hello World")
+            }
+            .tabItem {
+                Image(systemName: "person.fill")
+                Text("Profile")
+            }
+        }
     }
 }
 
