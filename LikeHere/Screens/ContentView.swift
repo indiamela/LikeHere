@@ -11,6 +11,10 @@ struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
             .padding()
+        //Register
+        Text("Register")
+            .font(.custom("Comfortaa Regular", size: 36))
+            .tracking(-0.54)
     }
 }
 

@@ -13,6 +13,7 @@
 		F2E40035266CB7E700A206CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E40034266CB7E700A206CC /* Preview Assets.xcassets */; };
 		F2E40040266CB7E700A206CC /* LikeHereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4003F266CB7E700A206CC /* LikeHereTests.swift */; };
 		F2E4004B266CB7E700A206CC /* LikeHereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4004A266CB7E700A206CC /* LikeHereUITests.swift */; };
+		F2E40059266CC54A00A206CC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E40058266CC54A00A206CC /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		F2E40046266CB7E700A206CC /* LikeHereUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LikeHereUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E4004A266CB7E700A206CC /* LikeHereUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeHereUITests.swift; sourceTree = "<group>"; };
 		F2E4004C266CB7E700A206CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2E40058266CC54A00A206CC /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +98,11 @@
 			isa = PBXGroup;
 			children = (
 				F2E4002D266CB7E500A206CC /* LikeHereApp.swift */,
-				F2E4002F266CB7E500A206CC /* ContentView.swift */,
+				F2E4005B266CCA9F00A206CC /* SubViews */,
+				F2E4005A266CCA7B00A206CC /* Screens */,
 				F2E40031266CB7E700A206CC /* Assets.xcassets */,
 				F2E40036266CB7E700A206CC /* Info.plist */,
+				F2E40058266CC54A00A206CC /* Launch Screen.storyboard */,
 				F2E40033266CB7E700A206CC /* Preview Content */,
 			);
 			path = LikeHere;
@@ -128,6 +132,21 @@
 				F2E4004C266CB7E700A206CC /* Info.plist */,
 			);
 			path = LikeHereUITests;
+			sourceTree = "<group>";
+		};
+		F2E4005A266CCA7B00A206CC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F2E4002F266CB7E500A206CC /* ContentView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F2E4005B266CCA9F00A206CC /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2E40059266CC54A00A206CC /* Launch Screen.storyboard in Resources */,
 				F2E40035266CB7E700A206CC /* Preview Assets.xcassets in Resources */,
 				F2E40032266CB7E700A206CC /* Assets.xcassets in Resources */,
 			);
@@ -430,7 +450,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TaishiKusunose.LikeHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -452,7 +472,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TaishiKusunose.LikeHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
