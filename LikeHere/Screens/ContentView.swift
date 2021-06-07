@@ -15,8 +15,8 @@ struct ContentView: View {
                 Text("Hello World")
             }
             .tabItem {
-                Image(systemName: "book.fill")
-                Text("Feed")
+                Image(systemName: "house.fill")
+                Text("Home")
             }
             NavigationView{
                 Text("Hello World")

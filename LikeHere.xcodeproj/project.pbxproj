@@ -18,6 +18,9 @@
 		F2E4004B266CB7E700A206CC /* LikeHereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4004A266CB7E700A206CC /* LikeHereUITests.swift */; };
 		F2E40059266CC54A00A206CC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E40058266CC54A00A206CC /* Launch Screen.storyboard */; };
 		F2E4005D266D876E00A206CC /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4005C266D876E00A206CC /* SignUpView.swift */; };
+		F2E4005F266ED64400A206CC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4005E266ED64400A206CC /* HomeView.swift */; };
+		F2E40061266ED8B800A206CC /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40060266ED8B800A206CC /* HomeHeaderView.swift */; };
+		F2E40063266ED93A00A206CC /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40062266ED93A00A206CC /* PostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		F2E4004C266CB7E700A206CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2E40058266CC54A00A206CC /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F2E4005C266D876E00A206CC /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		F2E4005E266ED64400A206CC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F2E40060266ED8B800A206CC /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		F2E40062266ED93A00A206CC /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		F62C0AD87E8DB342C8CCD1F7 /* Pods-LikeHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere/Pods-LikeHere.release.xcconfig"; sourceTree = "<group>"; };
 		FFE737C56B7766699E3C4409 /* Pods_LikeHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikeHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -180,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				F2E4002F266CB7E500A206CC /* ContentView.swift */,
+				F2E4005E266ED64400A206CC /* HomeView.swift */,
 				F2E4005C266D876E00A206CC /* SignUpView.swift */,
 			);
 			path = Screens;
@@ -188,6 +195,8 @@
 		F2E4005B266CCA9F00A206CC /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				F2E40060266ED8B800A206CC /* HomeHeaderView.swift */,
+				F2E40062266ED93A00A206CC /* PostView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -506,7 +515,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E40030266CB7E500A206CC /* ContentView.swift in Sources */,
+				F2E40061266ED8B800A206CC /* HomeHeaderView.swift in Sources */,
+				F2E4005F266ED64400A206CC /* HomeView.swift in Sources */,
 				F2E4005D266D876E00A206CC /* SignUpView.swift in Sources */,
+				F2E40063266ED93A00A206CC /* PostView.swift in Sources */,
 				F2E4002E266CB7E500A206CC /* LikeHereApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
