@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         TabView{
             NavigationView{
-                Text("Hello World")
+                HomeView(posts: PostArrayObject())
             }
             .tabItem {
                 Image(systemName: "house.fill")
@@ -40,6 +40,7 @@ struct ContentView: View {
                 Text("Profile")
             }
         }
+        .accentColor(.black)
     }
 }
 

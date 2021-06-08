@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var posts:PostArrayObject
+    
     var body: some View {
         ScrollView(.vertical,showsIndicators: false){
             LazyVStack{
-                PostView()
-                PostView()
-                PostView()
+                ForEach(posts.dataArray, id: \.self) { post in
+                    PostView(post: post)
+                }
             }
         }
         .navigationBarTitle("title")
@@ -24,7 +26,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            HomeView()
+            HomeView(posts: PostArrayObject())
         }
     }
 }
