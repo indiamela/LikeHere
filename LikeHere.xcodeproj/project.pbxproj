@@ -12,6 +12,9 @@
 		EFF1E1FB25AC2BC4ED52FDFC /* Pods_LikeHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE737C56B7766699E3C4409 /* Pods_LikeHere.framework */; };
 		F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23EE267028E600FDF33A /* PostModel.swift */; };
 		F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */; };
+		F2BF23F3267179FB00FDF33A /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F2267179FB00FDF33A /* CommentsView.swift */; };
+		F2BF23F526717AAA00FDF33A /* CommentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F426717AAA00FDF33A /* CommentContentView.swift */; };
+		F2BF23F726717E2F00FDF33A /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F626717E2F00FDF33A /* CommentModel.swift */; };
 		F2E4002E266CB7E500A206CC /* LikeHereApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4002D266CB7E500A206CC /* LikeHereApp.swift */; };
 		F2E40030266CB7E500A206CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4002F266CB7E500A206CC /* ContentView.swift */; };
 		F2E40032266CB7E700A206CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E40031266CB7E700A206CC /* Assets.xcassets */; };
@@ -21,7 +24,6 @@
 		F2E40059266CC54A00A206CC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E40058266CC54A00A206CC /* Launch Screen.storyboard */; };
 		F2E4005D266D876E00A206CC /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4005C266D876E00A206CC /* SignUpView.swift */; };
 		F2E4005F266ED64400A206CC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4005E266ED64400A206CC /* HomeView.swift */; };
-		F2E40061266ED8B800A206CC /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40060266ED8B800A206CC /* HomeHeaderView.swift */; };
 		F2E40063266ED93A00A206CC /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40062266ED93A00A206CC /* PostView.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,9 @@
 		EBD791A9FDB837B941AB2168 /* Pods_LikeHere_LikeHereUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikeHere_LikeHereUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BF23EE267028E600FDF33A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArrayObject.swift; sourceTree = "<group>"; };
+		F2BF23F2267179FB00FDF33A /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		F2BF23F426717AAA00FDF33A /* CommentContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentContentView.swift; sourceTree = "<group>"; };
+		F2BF23F626717E2F00FDF33A /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		F2E4002A266CB7E500A206CC /* LikeHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LikeHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E4002D266CB7E500A206CC /* LikeHereApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeHereApp.swift; sourceTree = "<group>"; };
 		F2E4002F266CB7E500A206CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,7 +72,6 @@
 		F2E40058266CC54A00A206CC /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F2E4005C266D876E00A206CC /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		F2E4005E266ED64400A206CC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		F2E40060266ED8B800A206CC /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		F2E40062266ED93A00A206CC /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		F62C0AD87E8DB342C8CCD1F7 /* Pods-LikeHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere/Pods-LikeHere.release.xcconfig"; sourceTree = "<group>"; };
 		FFE737C56B7766699E3C4409 /* Pods_LikeHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikeHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +133,7 @@
 			children = (
 				F2BF23EE267028E600FDF33A /* PostModel.swift */,
 				F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */,
+				F2BF23F626717E2F00FDF33A /* CommentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 				F2E4002F266CB7E500A206CC /* ContentView.swift */,
 				F2E4005E266ED64400A206CC /* HomeView.swift */,
 				F2E4005C266D876E00A206CC /* SignUpView.swift */,
+				F2BF23F2267179FB00FDF33A /* CommentsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -209,7 +215,7 @@
 		F2E4005B266CCA9F00A206CC /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				F2E40060266ED8B800A206CC /* HomeHeaderView.swift */,
+				F2BF23F426717AAA00FDF33A /* CommentContentView.swift */,
 				F2E40062266ED93A00A206CC /* PostView.swift */,
 			);
 			path = SubViews;
@@ -529,12 +535,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E40030266CB7E500A206CC /* ContentView.swift in Sources */,
-				F2E40061266ED8B800A206CC /* HomeHeaderView.swift in Sources */,
+				F2BF23F526717AAA00FDF33A /* CommentContentView.swift in Sources */,
+				F2BF23F3267179FB00FDF33A /* CommentsView.swift in Sources */,
 				F2E4005F266ED64400A206CC /* HomeView.swift in Sources */,
 				F2E4005D266D876E00A206CC /* SignUpView.swift in Sources */,
 				F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */,
 				F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */,
 				F2E40063266ED93A00A206CC /* PostView.swift in Sources */,
+				F2BF23F726717E2F00FDF33A /* CommentModel.swift in Sources */,
 				F2E4002E266CB7E500A206CC /* LikeHereApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

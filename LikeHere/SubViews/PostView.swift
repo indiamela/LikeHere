@@ -61,12 +61,13 @@ struct PostView: View {
                 })
                 .accentColor(.green)
                 
-                Button(action: {
                     //comment
-                }, label: {
-                    Image(systemName: "bubble.middle.bottom")
-                        .font(.title2)
-                })
+                NavigationLink(
+                    destination: CommentsView(post: post),
+                    label: {
+                        Image(systemName: "bubble.middle.bottom")
+                            .font(.title2)
+                    })
                 .accentColor(.black)
                 
                 Button(action: {
