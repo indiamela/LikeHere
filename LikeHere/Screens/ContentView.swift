@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WaterfallGrid
 
 struct ContentView: View {
     var login:Bool = false
@@ -19,7 +20,7 @@ struct ContentView: View {
                 Text("Home")
             }
             NavigationView{
-                Text("Hello World")
+                DiscoverView()
             }
             .tabItem {
                 Image(systemName: "magnifyingglass")
