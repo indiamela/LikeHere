@@ -21,7 +21,7 @@ struct DiscoverView: View {
             
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack(spacing:20){
-                    ForEach((0..<4), id: \.self) { index in
+                    ForEach((0..<7), id: \.self) { index in
                         VStack{
                             Image("category\(index)")
                                 .resizable()
@@ -72,6 +72,10 @@ struct DiscoverView: View {
         case 3:
             return "Intersting"
         case 4:
+            return "Freedom"
+        case 5:
+            return "Peaceful"
+        case 6:
             return "Jouful"
         default:
             return "BROWSE ALL"

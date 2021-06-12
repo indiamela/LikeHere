@@ -36,7 +36,7 @@ struct PostView: View {
             .padding(.top,10)
             
             // MARK: - IMAGE
-            Image("dog3")
+            Image("place6")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(maxWidth:.infinity, maxHeight: 200)
