@@ -9,53 +9,80 @@ import SwiftUI
 import WaterfallGrid
 
 struct DiscoverView: View {
-    @State var selection: Int = 1
+    @State var selection: Int = 0
     var body: some View {
         
-        ScrollView(.vertical){
-            ScrollView(.horizontal, showsIndicators: true, content: {
-                ForEach((1..<5), id: \.self) { index in
-                    Image("category\(index)")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
+        VStack(alignment: .leading){
+            //search feeling
+            Text("search feeling")
+                .font(.headline)
+                .textCase(.uppercase)
+                .padding()
+            
+            ScrollView(.horizontal, showsIndicators: false, content: {
+                HStack(spacing:20){
+                    ForEach((0..<4), id: \.self) { index in
+                        VStack{
+                            Image("category\(index)")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 100, height: 100)
+                                .clipShape(Circle())
+                                .onTapGesture {
+                                    selection = index
+                                }
+                            
+                            Text(categoryName(index))
+                                .font(.caption)
+                        }
+                    }
                 }
             })
-//            Scroll(selection: $selection,
-//                    content:  {
-//                        ForEach(1..<4) { count in
-//                            Image("dog\(count)")
-//                                .resizable()
-//                                .scaledToFill()
-//                                .tag(count)
-//                        }
-//                    })
-//                .tabViewStyle(PageTabViewStyle())
-//                .frame(height:300)
-//                .animation(.default)
+            
+            //browse all
+            Text(categoryName($selection.wrappedValue))
+                .font(.headline)
+                .padding()
+                .padding(.top,30)
             
             ScrollView(showsIndicators: true) {
-                LazyVStack{
-                    WaterfallGrid((1..<8), id: \.self) { index in
-                        Image("place\(index)")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .gridStyle(
-                        columns: 2,
-                        animation: .easeInOut(duration: 0.5)
-                    )
+                WaterfallGrid((1..<8), id: \.self) { index in
+                    Image("place\(index)")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                 }
+                .gridStyle(
+                    columns: 2,
+                    animation: .easeInOut(duration: 0.5)
+                )
             }
         }
-        
+        .navigationBarTitle("discover")
+        .navigationBarTitleDisplayMode(.large)
+    }
+    
+    func categoryName(_ index:Int) -> String{
+        switch index {
+        case 0:
+          return "BROWSE ALL"
+        case 1:
+          return "Reluxing"
+        case 2:
+            return "Loving"
+        case 3:
+            return "Intersting"
+        case 4:
+            return "Jouful"
+        default:
+            return "BROWSE ALL"
+        }
     }
 }
 
 struct DiscoverView_Previews: PreviewProvider {
     static var previews: some View {
-        DiscoverView()
-        
+        NavigationView{
+            DiscoverView()
+        }
     }
 }
