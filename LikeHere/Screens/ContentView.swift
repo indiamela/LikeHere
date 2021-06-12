@@ -5,8 +5,8 @@
 //  Created by Taishi Kusunose on 2021/06/06.
 //
 
+import UIKit
 import SwiftUI
-import WaterfallGrid
 
 struct ContentView: View {
     var login:Bool = false
@@ -49,7 +49,7 @@ struct ContentView: View {
                 .padding(.bottom, 70)
                 .padding(.trailing,40)
                 .actionSheet(isPresented: $showAlert) {
-                    ActionSheet(title: Text("Upload"), message: nil, buttons: [
+                    ActionSheet(title: Text("Upload New Photo"), message: nil, buttons: [
                         .default(Text("Take Photo"),action:{
                             
                         }),
