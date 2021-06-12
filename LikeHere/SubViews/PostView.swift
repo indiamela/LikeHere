@@ -38,8 +38,8 @@ struct PostView: View {
             // MARK: - IMAGE
             Image("place6")
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(maxWidth:.infinity, maxHeight: 200)
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth:.infinity, maxHeight: 300)
                 .clipShape(Rectangle())
                 .edgesIgnoringSafeArea(.all)
             

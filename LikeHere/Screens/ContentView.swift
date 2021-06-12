@@ -11,6 +11,10 @@ import SwiftUI
 struct ContentView: View {
     var login:Bool = false
     @State var showAlert: Bool = false
+    @State var showImagePicker: Bool = false
+    @State var imageSelected: UIImage = UIImage(named: "logo")!
+    @State var sourceType: UIImagePickerController.SourceType = .camera
+    
     var body: some View {
         ZStack(alignment:.trailing){
             TabView{
@@ -51,13 +55,18 @@ struct ContentView: View {
                 .actionSheet(isPresented: $showAlert) {
                     ActionSheet(title: Text("Upload New Photo"), message: nil, buttons: [
                         .default(Text("Take Photo"),action:{
-                            
+                            sourceType = UIImagePickerController.SourceType.camera
+                            showImagePicker.toggle()
                         }),
                         .default(Text("Import Photo"),action:{
-                            
+                            sourceType = UIImagePickerController.SourceType.photoLibrary
+                            showImagePicker.toggle()
                         }),
                         .cancel()
                     ])
+                }
+                .sheet(isPresented: $showImagePicker) {
+                    ImagePicker(imageselected: $imageSelected, sourceType: $sourceType)
                 }
             }
         }
