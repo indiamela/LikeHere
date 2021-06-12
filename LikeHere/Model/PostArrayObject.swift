@@ -19,4 +19,26 @@ class PostArrayObject:ObservableObject{
         dataArray.append(post2)
         dataArray.append(post3)
     }
+    
+    func tagName(_ index:Int) -> String{
+        switch index {
+        case 0:
+          return "BROWSE ALL"
+        case 1:
+          return "Reluxing"
+        case 2:
+            return "Loving"
+        case 3:
+            return "Intersting"
+        case 4:
+            return "Freedom"
+        case 5:
+            return "Peaceful"
+        case 6:
+            return "Jouful"
+        default:
+            return "BROWSE ALL"
+        }
+    }
+    
 }
