@@ -80,17 +80,19 @@ struct PostView: View {
             }
             .padding(.horizontal,20)
             
-            HStack{
-                Image(systemName: "mappin.and.ellipse")
-                    .font(.title3)
-                    .accentColor(.black)
-                //Plaece Addless
-                Text(post.address ?? "")
-                    .font(.custom("Roboto Regular", size: 14))
-                    .foregroundColor(Color(#colorLiteral(red: 0.78, green: 0.8, blue: 0.83, alpha: 1)))
+            if let address = post.address {
+                HStack{
+                    Image(systemName: "mappin.and.ellipse")
+                        .font(.title3)
+                        .accentColor(.black)
+                    //Plaece Addless
+                    Text(address)
+                        .font(.custom("Roboto Regular", size: 14))
+                        .foregroundColor(Color(#colorLiteral(red: 0.78, green: 0.8, blue: 0.83, alpha: 1)))
+                }
+                .padding(.horizontal,20)
+                .padding(.top,5)
             }
-            .padding(.horizontal,20)
-            .padding(.top,5)
             
             //小さなお子様連れの旅行では、持ち物がたくさんあるので...
             if let caption = post.caption{
@@ -109,7 +111,7 @@ struct PostView: View {
 }
 
 struct PostView_Previews: PreviewProvider {
-    static var post = PostModel(tag: "", postID: "", userID: "", username: "displayName", caption: "小さなお子様連れの旅行では、持ち物がたくさんあるのでつい忘れてしまう物も出てきます。館内にコンビニや売店があれば、もしもの時にすぐに買い物ができるので便利です。", dateCreated: Date(), wantCount: 5, goneCount: 2, wantByUser: true, goneByUser: true)
+    static var post = PostModel(tag: "", postID: "", userID: "", username: "displayName",caption: "小さなお子様連れの旅行では、持ち物がたくさんあるのでつい忘れてしまう物も出てきます。館内にコンビニや売店があれば、もしもの時にすぐに買い物ができるので便利です。",address: "Italy", dateCreated: Date(), wantCount: 5, goneCount: 2, wantByUser: true, goneByUser: true)
     static var previews: some View {
         PostView(post: post)
             .previewLayout(.sizeThatFits)

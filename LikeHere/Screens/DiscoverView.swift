@@ -17,7 +17,7 @@ struct DiscoverView: View {
             Text("search feeling")
                 .font(.headline)
                 .textCase(.uppercase)
-                .padding()
+                .padding(.leading,20)
             
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack(spacing:20){
@@ -34,17 +34,22 @@ struct DiscoverView: View {
                             
                             Text(categoryName(index))
                                 .font(.caption)
+                            Circle()
+                                .frame(width: 5, height: 5, alignment: .center)
+                                .foregroundColor(.yellow)
+                                .opacity(selection == index ? 1.0 : 0)
                         }
                     }
                 }
             })
+            .offset(y:-10)
             
             //browse all
             Text(categoryName($selection.wrappedValue))
                 .font(.headline)
-                .padding()
-                .padding(.top,30)
-            
+                .padding(.leading,20)
+                .padding(.top,10)
+
             ScrollView(showsIndicators: true) {
                 WaterfallGrid((1..<8), id: \.self) { index in
                     Image("place\(index)")

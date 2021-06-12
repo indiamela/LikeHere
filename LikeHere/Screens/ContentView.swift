@@ -15,6 +15,8 @@ struct ContentView: View {
     @State var imageSelected: UIImage = UIImage(named: "logo")!
     @State var sourceType: UIImagePickerController.SourceType = .camera
     
+    @State var showPostImageView: Bool = false
+    
     var body: some View {
         ZStack(alignment:.trailing){
             TabView{
@@ -65,10 +67,21 @@ struct ContentView: View {
                         .cancel()
                     ])
                 }
-                .sheet(isPresented: $showImagePicker) {
+                .sheet(isPresented: $showImagePicker, onDismiss: segueToPostImageView) {
                     ImagePicker(imageselected: $imageSelected, sourceType: $sourceType)
                 }
             }
+            .fullScreenCover(isPresented: $showPostImageView, content: {
+                PostImageView(imageSelected: $imageSelected)
+            })
+        }
+    }
+    
+    // MARK: - FUNCTIONS
+    
+    func segueToPostImageView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            showPostImageView.toggle()
         }
     }
 }
