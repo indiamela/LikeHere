@@ -43,6 +43,7 @@ struct DiscoverView: View {
                 }
             })
             .offset(y:-10)
+            Divider()
             
             //browse all
             Text(categoryName($selection.wrappedValue))

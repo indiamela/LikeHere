@@ -28,6 +28,8 @@
 		F2E40063266ED93A00A206CC /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40062266ED93A00A206CC /* PostView.swift */; };
 		F2F45CE52674A99400604465 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CE42674A99400604465 /* ImagePicker.swift */; };
 		F2F45CE72674B53000604465 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CE62674B53000604465 /* PostImageView.swift */; };
+		F2F45CE92675C4A200604465 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CE82675C4A200604465 /* ProfileView.swift */; };
+		F2F45CEB2675CA6A00604465 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CEA2675CA6A00604465 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		F2E40062266ED93A00A206CC /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		F2F45CE42674A99400604465 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F2F45CE62674B53000604465 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
+		F2F45CE82675C4A200604465 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F2F45CEA2675CA6A00604465 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		F62C0AD87E8DB342C8CCD1F7 /* Pods-LikeHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere/Pods-LikeHere.release.xcconfig"; sourceTree = "<group>"; };
 		FFE737C56B7766699E3C4409 /* Pods_LikeHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikeHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -216,6 +220,8 @@
 				F2BF23F2267179FB00FDF33A /* CommentsView.swift */,
 				F2BF23F82672CC9300FDF33A /* DiscoverView.swift */,
 				F2F45CE62674B53000604465 /* PostImageView.swift */,
+				F2F45CE82675C4A200604465 /* ProfileView.swift */,
+				F2F45CEA2675CA6A00604465 /* ProfileHeaderView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -550,11 +556,13 @@
 				F2E4005F266ED64400A206CC /* HomeView.swift in Sources */,
 				F2E4005D266D876E00A206CC /* SignUpView.swift in Sources */,
 				F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */,
+				F2F45CEB2675CA6A00604465 /* ProfileHeaderView.swift in Sources */,
 				F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */,
 				F2E40063266ED93A00A206CC /* PostView.swift in Sources */,
 				F2F45CE52674A99400604465 /* ImagePicker.swift in Sources */,
 				F2BF23F726717E2F00FDF33A /* CommentModel.swift in Sources */,
 				F2E4002E266CB7E500A206CC /* LikeHereApp.swift in Sources */,
+				F2F45CE92675C4A200604465 /* ProfileView.swift in Sources */,
 				F2F45CE72674B53000604465 /* PostImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

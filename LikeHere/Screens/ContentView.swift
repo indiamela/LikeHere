@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var showImagePicker: Bool = false
     @State var imageSelected: UIImage = UIImage(named: "logo")!
     @State var sourceType: UIImagePickerController.SourceType = .camera
+    @State var checkIn: Bool = true
     
     @State var showPostImageView: Bool = false
     
@@ -34,8 +35,13 @@ struct ContentView: View {
                     Image(systemName: "magnifyingglass")
                     Text("Browse")
                 }
-                NavigationView{
-                    Text("Hello World")
+
+                ZStack{
+                    if checkIn {
+                        ProfileView()
+                    } else {
+                        SignUpView()
+                    }
                 }
                 .tabItem {
                     Image(systemName: "person.fill")

@@ -111,7 +111,7 @@ struct PostView: View {
 }
 
 struct PostView_Previews: PreviewProvider {
-    static var post = PostModel(tag: "", postID: "", userID: "", username: "displayName",caption: "小さなお子様連れの旅行では、持ち物がたくさんあるのでつい忘れてしまう物も出てきます。館内にコンビニや売店があれば、もしもの時にすぐに買い物ができるので便利です。",address: "Italy", dateCreated: Date(), wantCount: 5, goneCount: 2, wantByUser: true, goneByUser: true)
+    static var post = PostModel(tag: "", postID: "", userID: "", username: "displayName",caption: "小さなお子様連れの旅行では、持ち物がたくさんあるのでつい忘れてしまう物も出てきます。館内にコンビニや売店があれば、もしもの時にすぐに買い物ができるので便利です。",address: "Italy", dateCreated: Date(), likeCount: 5, goneCount: 2, likeByUser: true, goneByUser: true)
     static var previews: some View {
         PostView(post: post)
             .previewLayout(.sizeThatFits)
