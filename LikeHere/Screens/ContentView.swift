@@ -38,7 +38,9 @@ struct ContentView: View {
 
                 ZStack{
                     if checkIn {
-                        ProfileView()
+                        NavigationView{
+                            ProfileView()
+                        }
                     } else {
                         SignUpView()
                     }

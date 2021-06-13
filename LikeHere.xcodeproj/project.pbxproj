@@ -30,6 +30,11 @@
 		F2F45CE72674B53000604465 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CE62674B53000604465 /* PostImageView.swift */; };
 		F2F45CE92675C4A200604465 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CE82675C4A200604465 /* ProfileView.swift */; };
 		F2F45CEB2675CA6A00604465 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CEA2675CA6A00604465 /* ProfileHeaderView.swift */; };
+		F2F45CED2675D6C900604465 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CEC2675D6C900604465 /* SettingsView.swift */; };
+		F2F45CEF2675D7EB00604465 /* SettingLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CEE2675D7EB00604465 /* SettingLabelView.swift */; };
+		F2F45CF12675DAF600604465 /* SettingEditTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CF02675DAF600604465 /* SettingEditTextView.swift */; };
+		F2F45CF32675E02700604465 /* SettingRollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CF22675E02700604465 /* SettingRollView.swift */; };
+		F2F45CF52675E1CE00604465 /* SettingEditImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F45CF42675E1CE00604465 /* SettingEditImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +88,11 @@
 		F2F45CE62674B53000604465 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		F2F45CE82675C4A200604465 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F2F45CEA2675CA6A00604465 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		F2F45CEC2675D6C900604465 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F2F45CEE2675D7EB00604465 /* SettingLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLabelView.swift; sourceTree = "<group>"; };
+		F2F45CF02675DAF600604465 /* SettingEditTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEditTextView.swift; sourceTree = "<group>"; };
+		F2F45CF22675E02700604465 /* SettingRollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRollView.swift; sourceTree = "<group>"; };
+		F2F45CF42675E1CE00604465 /* SettingEditImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEditImageView.swift; sourceTree = "<group>"; };
 		F62C0AD87E8DB342C8CCD1F7 /* Pods-LikeHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere/Pods-LikeHere.release.xcconfig"; sourceTree = "<group>"; };
 		FFE737C56B7766699E3C4409 /* Pods_LikeHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikeHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -221,7 +231,7 @@
 				F2BF23F82672CC9300FDF33A /* DiscoverView.swift */,
 				F2F45CE62674B53000604465 /* PostImageView.swift */,
 				F2F45CE82675C4A200604465 /* ProfileView.swift */,
-				F2F45CEA2675CA6A00604465 /* ProfileHeaderView.swift */,
+				F2F45CEC2675D6C900604465 /* SettingsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -232,6 +242,11 @@
 				F2BF23F426717AAA00FDF33A /* CommentContentView.swift */,
 				F2F45CE42674A99400604465 /* ImagePicker.swift */,
 				F2E40062266ED93A00A206CC /* PostView.swift */,
+				F2F45CEE2675D7EB00604465 /* SettingLabelView.swift */,
+				F2F45CEA2675CA6A00604465 /* ProfileHeaderView.swift */,
+				F2F45CF02675DAF600604465 /* SettingEditTextView.swift */,
+				F2F45CF22675E02700604465 /* SettingRollView.swift */,
+				F2F45CF42675E1CE00604465 /* SettingEditImageView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -558,9 +573,14 @@
 				F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */,
 				F2F45CEB2675CA6A00604465 /* ProfileHeaderView.swift in Sources */,
 				F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */,
+				F2F45CED2675D6C900604465 /* SettingsView.swift in Sources */,
+				F2F45CF32675E02700604465 /* SettingRollView.swift in Sources */,
 				F2E40063266ED93A00A206CC /* PostView.swift in Sources */,
 				F2F45CE52674A99400604465 /* ImagePicker.swift in Sources */,
 				F2BF23F726717E2F00FDF33A /* CommentModel.swift in Sources */,
+				F2F45CF12675DAF600604465 /* SettingEditTextView.swift in Sources */,
+				F2F45CF52675E1CE00604465 /* SettingEditImageView.swift in Sources */,
+				F2F45CEF2675D7EB00604465 /* SettingLabelView.swift in Sources */,
 				F2E4002E266CB7E500A206CC /* LikeHereApp.swift in Sources */,
 				F2F45CE92675C4A200604465 /* ProfileView.swift in Sources */,
 				F2F45CE72674B53000604465 /* PostImageView.swift in Sources */,

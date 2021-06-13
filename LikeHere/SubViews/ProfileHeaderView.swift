@@ -17,7 +17,7 @@ struct ProfileHeaderView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 128, height: 128)
                 .clipShape(Circle())
-                .padding()
+                .padding(.top,30)
             
             //Jane
             Text("Jane")

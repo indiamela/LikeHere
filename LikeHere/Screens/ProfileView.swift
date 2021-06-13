@@ -11,6 +11,10 @@ import WaterfallGrid
 struct ProfileView: View {
     @State var isMyProfile = true
     @State var settingsView = false
+    @State var userDisplayName = ""
+    @State var userDisplayAddress = ""
+    @State var userProfilePicture = UIImage(named: "dog1")!
+
     
     var body: some View {
         VStack{
@@ -40,6 +44,9 @@ struct ProfileView: View {
                                 .opacity(isMyProfile ? 1.0 : 0.0)
                             
         )
+        .sheet(isPresented: $settingsView, content: {
+            SettingsView(userDisplayName: $userDisplayName, userDisplayAddress: $userDisplayAddress, userProfilePicture: $userProfilePicture)
+        })
     }
 }
 

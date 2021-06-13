@@ -19,8 +19,18 @@ struct SignUpView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack(alignment:.center){
-                Image("logotitle")
-                    .padding(.top,200)
+                VStack{
+                    //Like Here
+                    Text("Like Here")
+                        .font(.custom("Georgia-BoldItalic", size: 48))
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                    //旅に出よう。好きな居場所を見つけよう。
+                    Text("旅に出よう。好きな居場所を見つけよう。").font(.custom("Comfortaa bold", size: 15))
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                        .tracking(-0.22)
+                        .padding()
+                }
+                .padding(.top,150)
                 Spacer()
                 VStack(spacing:20){
                     Button(action: {
