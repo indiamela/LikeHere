@@ -39,6 +39,7 @@ struct CommentsView: View {
                 })
             }
         }
+        .padding()
         .navigationBarTitle(Text("Chats"))
         .onAppear(perform: {
             getComments()

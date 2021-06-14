@@ -46,6 +46,17 @@ struct SettingsView: View {
                     
                 })
                 .padding()
+
+                
+                GroupBox(label: SettingLabelView(labelText: "Application", labelImage: "apps.iphone"), content: {
+                    Button(action: {
+                        openCustomURL(urlString: "https://www.google.com")
+                    }, label: {
+                        SettingRollView(leftIcon: "folder.fill", text: "Privacy Policy", color: Color.yellow)
+                    })
+                })
+                .padding()
+
             }
         }
         .navigationBarTitle("Settings")
@@ -63,13 +74,21 @@ struct SettingsView: View {
     func signOut(){
         
     }
+    
+    func openCustomURL(urlString:String){
+        guard let url = URL(string: urlString) else {return}
+        if UIApplication.shared.canOpenURL(url){
+            UIApplication.shared.open(url)
+        }
+    }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     @State static var testString:String = ""
     @State static var image: UIImage = UIImage(named: "dog1")!
     static var previews: some View {
-        SettingsView(userDisplayName: $testString, userDisplayAddress: $testString, userProfilePicture: $image)
-            .preferredColorScheme(.dark)
+        NavigationView{
+            SettingsView(userDisplayName: $testString, userDisplayAddress: $testString, userProfilePicture: $image)
+        }
     }
 }
