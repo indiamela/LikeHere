@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		01991D11D8CF090E1507F961 /* Pods_LikeHereTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BB7986ABB0BC3CBC664D79 /* Pods_LikeHereTests.framework */; };
 		02103E28FCB1A5C89B3AD4B7 /* Pods_LikeHere_LikeHereUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD791A9FDB837B941AB2168 /* Pods_LikeHere_LikeHereUITests.framework */; };
 		EFF1E1FB25AC2BC4ED52FDFC /* Pods_LikeHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE737C56B7766699E3C4409 /* Pods_LikeHere.framework */; };
+		F260345A267AB6AB008C3E51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */; };
 		F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23EE267028E600FDF33A /* PostModel.swift */; };
 		F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */; };
 		F2BF23F3267179FB00FDF33A /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F2267179FB00FDF33A /* CommentsView.swift */; };
@@ -62,6 +63,7 @@
 		DA683F2BEED9FDA6A3E50588 /* Pods-LikeHere-LikeHereUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere-LikeHereUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAB8B0A8F62E89721F9BCD32 /* Pods-LikeHere-LikeHereUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere-LikeHereUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EBD791A9FDB837B941AB2168 /* Pods_LikeHere_LikeHereUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikeHere_LikeHereUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2BF23EE267028E600FDF33A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArrayObject.swift; sourceTree = "<group>"; };
 		F2BF23F2267179FB00FDF33A /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				F2E4005A266CCA7B00A206CC /* Screens */,
 				F2E40031266CB7E700A206CC /* Assets.xcassets */,
 				F2E40036266CB7E700A206CC /* Info.plist */,
+				F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */,
 				F2E40058266CC54A00A206CC /* Launch Screen.storyboard */,
 				F2E40033266CB7E700A206CC /* Preview Content */,
 			);
@@ -282,8 +285,6 @@
 				F2E40037266CB7E700A206CC /* Sources */,
 				F2E40038266CB7E700A206CC /* Frameworks */,
 				F2E40039266CB7E700A206CC /* Resources */,
-				A48109E4DEEF44A31CB3486A /* [CP] Embed Pods Frameworks */,
-				DBBA25DCECE1DDD8F4B7B58B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -363,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F260345A267AB6AB008C3E51 /* GoogleService-Info.plist in Resources */,
 				F2E40059266CC54A00A206CC /* Launch Screen.storyboard in Resources */,
 				F2E40035266CB7E700A206CC /* Preview Assets.xcassets in Resources */,
 				F2E40032266CB7E700A206CC /* Assets.xcassets in Resources */,
@@ -394,15 +396,18 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LikeHere-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		35D53A98D06C658E4B794DB2 /* [CP] Embed Pods Frameworks */ = {
@@ -411,17 +416,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		46D86C87C094C9EF529D78F0 /* [CP] Check Pods Manifest.lock */ = {
@@ -432,15 +435,18 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LikeHere-LikeHereUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4AC5951B1647A8CAAF0361EA /* [CP] Copy Pods Resources */ = {
@@ -449,17 +455,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikeHere/Pods-LikeHere-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikeHere/Pods-LikeHere-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LikeHere/Pods-LikeHere-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LikeHere/Pods-LikeHere-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7BCE0A0D0A4C33796D2D5CB0 /* [CP] Check Pods Manifest.lock */ = {
@@ -470,15 +474,18 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LikeHereTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7C6F61BC0E0697C804C8F8A5 /* [CP] Embed Pods Frameworks */ = {
@@ -487,55 +494,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LikeHere/Pods-LikeHere-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A48109E4DEEF44A31CB3486A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikeHere/Pods-LikeHere-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LikeHereTests/Pods-LikeHereTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DBBA25DCECE1DDD8F4B7B58B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikeHere/Pods-LikeHere-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LikeHereTests/Pods-LikeHereTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LikeHere/Pods-LikeHere-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F00CB9B243232C5709129ACE /* [CP] Copy Pods Resources */ = {
@@ -544,17 +511,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -656,6 +621,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -717,6 +683,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -741,6 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LikeHere/Preview Content\"";
 				DEVELOPMENT_TEAM = 69MAR4S32D;
@@ -764,6 +732,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LikeHere/Preview Content\"";
 				DEVELOPMENT_TEAM = 69MAR4S32D;
