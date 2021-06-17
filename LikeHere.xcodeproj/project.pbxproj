@@ -10,6 +10,7 @@
 		01991D11D8CF090E1507F961 /* Pods_LikeHereTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BB7986ABB0BC3CBC664D79 /* Pods_LikeHereTests.framework */; };
 		02103E28FCB1A5C89B3AD4B7 /* Pods_LikeHere_LikeHereUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD791A9FDB837B941AB2168 /* Pods_LikeHere_LikeHereUITests.framework */; };
 		EFF1E1FB25AC2BC4ED52FDFC /* Pods_LikeHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE737C56B7766699E3C4409 /* Pods_LikeHere.framework */; };
+		F24D067D267C127A0069DC58 /* SignInWithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D067C267C127A0069DC58 /* SignInWithApp.swift */; };
 		F260345A267AB6AB008C3E51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */; };
 		F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23EE267028E600FDF33A /* PostModel.swift */; };
 		F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */; };
@@ -63,6 +64,7 @@
 		DA683F2BEED9FDA6A3E50588 /* Pods-LikeHere-LikeHereUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere-LikeHereUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAB8B0A8F62E89721F9BCD32 /* Pods-LikeHere-LikeHereUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere-LikeHereUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EBD791A9FDB837B941AB2168 /* Pods_LikeHere_LikeHereUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikeHere_LikeHereUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24D067C267C127A0069DC58 /* SignInWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithApp.swift; sourceTree = "<group>"; };
 		F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2BF23EE267028E600FDF33A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArrayObject.swift; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F24D067B267C125F0069DC58 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F24D067C267C127A0069DC58 /* SignInWithApp.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		F2BF23ED267028CE00FDF33A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				F2E4002D266CB7E500A206CC /* LikeHereApp.swift */,
+				F24D067B267C125F0069DC58 /* Auth */,
 				F2BF23ED267028CE00FDF33A /* Model */,
 				F2E4005B266CCA9F00A206CC /* SubViews */,
 				F2E4005A266CCA7B00A206CC /* Screens */,
@@ -543,6 +554,7 @@
 				F2E40063266ED93A00A206CC /* PostView.swift in Sources */,
 				F2F45CE52674A99400604465 /* ImagePicker.swift in Sources */,
 				F2BF23F726717E2F00FDF33A /* CommentModel.swift in Sources */,
+				F24D067D267C127A0069DC58 /* SignInWithApp.swift in Sources */,
 				F2F45CF12675DAF600604465 /* SettingEditTextView.swift in Sources */,
 				F2F45CF52675E1CE00604465 /* SettingEditImageView.swift in Sources */,
 				F2F45CEF2675D7EB00604465 /* SettingLabelView.swift in Sources */,

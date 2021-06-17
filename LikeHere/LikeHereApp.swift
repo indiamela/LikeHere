@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseCore
 import GoogleSignIn
 
 @main
 struct LikeHereApp: App {
+    
+    init(){
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
