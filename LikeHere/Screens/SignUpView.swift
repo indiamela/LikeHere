@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @State var showError = false
     var body: some View {
         ZStack{
             Image("login")
@@ -34,6 +35,7 @@ struct SignUpView: View {
                 Spacer()
                 VStack(spacing:20){
                     Button(action: {
+                        SignInWithApple.instance.startSignInWithAppleFlow(view: self)
                     }, label: {
                         Text("Sign in / Sign up".uppercased())
                             .font(.headline)
@@ -60,6 +62,9 @@ struct SignUpView: View {
                     })
                     .accentColor(.white)
                 }
+                .alert(isPresented: $showError, content: {
+                    return Alert(title: Text("Error signing in 😢"))
+                })
                 .padding(.horizontal,20)
                 .padding(.bottom,50)
             }

@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     var login:Bool = false
 
-    @State var checkIn: Bool = true
+    @State var checkIn: Bool = false
     
     
     var body: some View {
@@ -48,6 +48,9 @@ struct ContentView: View {
             }
             .accentColor(.black)
         }
+        .sheet(isPresented: $checkIn, content: {
+            SignUpView()
+        })
     }
     
 }

@@ -14,11 +14,13 @@ import FirebaseAuth
 class SignInWithApple: NSObject, ASAuthorizationControllerDelegate{
     
     static let instance = SignInWithApple()
+    var signUpView:SignUpView!
     
     // Unhashed nonce.
     fileprivate var currentNonce: String?
     
-    func startSignInWithAppleFlow() {
+    func startSignInWithAppleFlow(view:SignUpView) {
+        self.signUpView = view
         let nonce = randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -110,6 +112,8 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate{
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         // Handle error.
         print("Sign in with Apple errored: \(error)")
+        //エラー処理
+        self.signUpView.showError.toggle()
     }
 
 }
