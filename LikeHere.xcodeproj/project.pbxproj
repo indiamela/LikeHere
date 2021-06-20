@@ -11,6 +11,7 @@
 		02103E28FCB1A5C89B3AD4B7 /* Pods_LikeHere_LikeHereUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD791A9FDB837B941AB2168 /* Pods_LikeHere_LikeHereUITests.framework */; };
 		EFF1E1FB25AC2BC4ED52FDFC /* Pods_LikeHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE737C56B7766699E3C4409 /* Pods_LikeHere.framework */; };
 		F24D067D267C127A0069DC58 /* SignInWithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D067C267C127A0069DC58 /* SignInWithApp.swift */; };
+		F24D0682267FFE260069DC58 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D0681267FFE260069DC58 /* AuthService.swift */; };
 		F260345A267AB6AB008C3E51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */; };
 		F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23EE267028E600FDF33A /* PostModel.swift */; };
 		F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */; };
@@ -65,6 +66,8 @@
 		EAB8B0A8F62E89721F9BCD32 /* Pods-LikeHere-LikeHereUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere-LikeHereUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EBD791A9FDB837B941AB2168 /* Pods_LikeHere_LikeHereUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikeHere_LikeHereUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24D067C267C127A0069DC58 /* SignInWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithApp.swift; sourceTree = "<group>"; };
+		F24D067E267FFAE40069DC58 /* LikeHere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LikeHere.entitlements; sourceTree = "<group>"; };
+		F24D0681267FFE260069DC58 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2BF23EE267028E600FDF33A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArrayObject.swift; sourceTree = "<group>"; };
@@ -160,6 +163,23 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		F24D067F267FFDFE0069DC58 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F24D0680267FFE100069DC58 /* Firebase */,
+				F24D067B267C125F0069DC58 /* Auth */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F24D0680267FFE100069DC58 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				F24D0681267FFE260069DC58 /* AuthService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		F2BF23ED267028CE00FDF33A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,8 +215,9 @@
 		F2E4002C266CB7E500A206CC /* LikeHere */ = {
 			isa = PBXGroup;
 			children = (
+				F24D067F267FFDFE0069DC58 /* Services */,
+				F24D067E267FFAE40069DC58 /* LikeHere.entitlements */,
 				F2E4002D266CB7E500A206CC /* LikeHereApp.swift */,
-				F24D067B267C125F0069DC58 /* Auth */,
 				F2BF23ED267028CE00FDF33A /* Model */,
 				F2E4005B266CCA9F00A206CC /* SubViews */,
 				F2E4005A266CCA7B00A206CC /* Screens */,
@@ -545,6 +566,7 @@
 				F2BF23F92672CC9300FDF33A /* DiscoverView.swift in Sources */,
 				F2BF23F3267179FB00FDF33A /* CommentsView.swift in Sources */,
 				F2E4005F266ED64400A206CC /* HomeView.swift in Sources */,
+				F24D0682267FFE260069DC58 /* AuthService.swift in Sources */,
 				F2E4005D266D876E00A206CC /* SignUpView.swift in Sources */,
 				F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */,
 				F2F45CEB2675CA6A00604465 /* ProfileHeaderView.swift in Sources */,
@@ -721,6 +743,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_ENTITLEMENTS = LikeHere/LikeHere.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LikeHere/Preview Content\"";
 				DEVELOPMENT_TEAM = 69MAR4S32D;
@@ -745,6 +768,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_ENTITLEMENTS = LikeHere/LikeHere.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LikeHere/Preview Content\"";
 				DEVELOPMENT_TEAM = 69MAR4S32D;

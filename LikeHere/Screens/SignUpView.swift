@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SignUpView: View {
     @State var showError = false
@@ -67,6 +68,20 @@ struct SignUpView: View {
                 })
                 .padding(.horizontal,20)
                 .padding(.bottom,50)
+            }
+        }
+    }
+    
+    func connectToFirebase(name: String, email: String, provider: String, credential: AuthCredential){
+        
+        AuthService.instance.logInUserToFirebase(credential: credential) { (returnedProviderID, isError) in
+            
+            if let providerID = returnedProviderID, !isError {
+                //success
+            } else {
+                //error
+                print("Error getting into from log in user to Firebase")
+                self.showError.toggle()
             }
         }
     }

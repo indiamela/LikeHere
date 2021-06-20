@@ -106,6 +106,7 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate{
                                                       idToken: idTokenString,
                                                       rawNonce: nonce)
             print("SIGN IN TO FIREBASE NOW: withemail:\(email) / name: \(name) ")
+            signUpView.connectToFirebase(name: name, email: email, provider: "Apple", credential: credential)
         }
     }
     
