@@ -10,6 +10,12 @@ import Firebase
 
 struct SignUpView: View {
     @State var showError = false
+    @State var showRegisterView = false
+    @State var displayName: String = ""
+    @State var email: String = ""
+    @State var providerID: String = ""
+    @State var provider: String = ""
+    
     var body: some View {
         ZStack{
             Image("login")
@@ -66,6 +72,9 @@ struct SignUpView: View {
                 .alert(isPresented: $showError, content: {
                     return Alert(title: Text("Error signing in 😢"))
                 })
+                .fullScreenCover(isPresented: $showRegisterView, content: {
+                    RegisterView(displayName: $displayName, email: $email, providerID: $providerID, provider: $provider)
+                })
                 .padding(.horizontal,20)
                 .padding(.bottom,50)
             }
@@ -78,6 +87,11 @@ struct SignUpView: View {
             
             if let providerID = returnedProviderID, !isError {
                 //success
+                self.displayName = name
+                self.email = email
+                self.provider = provider
+                self.providerID = providerID
+                self.showRegisterView.toggle()
             } else {
                 //error
                 print("Error getting into from log in user to Firebase")

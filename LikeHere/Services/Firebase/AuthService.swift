@@ -33,5 +33,9 @@ class AuthService{
             handler(providerID, false)
         }
     }
+    
+    func createNewUserInDatabase(name: String, email: String, provider: String, providerID: String, profileImage: UIImage, handler: @escaping (_ userID: String?)->()) {
+        
+    }
 }
 
