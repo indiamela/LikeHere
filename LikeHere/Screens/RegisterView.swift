@@ -74,6 +74,7 @@ struct RegisterView: View {
     func createProfile(){
         AuthService.instance.createNewUserInDatabase(name: displayName, email: email, provider: provider, providerID:providerID, profileImage: imageSelected) { (returnedUserID) in
             if let userID = returnedUserID {
+                //success
                 
             } else {
                 //error

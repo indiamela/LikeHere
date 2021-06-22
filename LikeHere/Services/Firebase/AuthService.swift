@@ -7,11 +7,15 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
+let DB_BASE = Firestore.firestore()
 
 class AuthService{
     
     static let instance = AuthService()
+    
+    private var REF_USERS = DB_BASE.collection("users")  // usersコレクション
     
     func logInUserToFirebase(credential: AuthCredential,handler: @escaping(_ providerID: String?, _ isError: Bool) -> ()){
         
@@ -36,6 +40,33 @@ class AuthService{
     
     func createNewUserInDatabase(name: String, email: String, provider: String, providerID: String, profileImage: UIImage, handler: @escaping (_ userID: String?)->()) {
         
+        // set up a user Document
+        let document = REF_USERS.document()
+        let userID = document.documentID
+        
+        // Upload profileImage
+        
+        // Upload profile data
+        let userData: [String: Any] = [
+            DatabaseUserField.displayName: name,
+            DatabaseUserField.email : email,
+            DatabaseUserField.providerID : providerID,
+            DatabaseUserField.provider : provider,
+            DatabaseUserField.userID : userID,
+            DatabaseUserField.bio : "",
+            DatabaseUserField.dataCreated : FieldValue.serverTimestamp()
+        ]
+        
+        document.setData(userData) {(error) in
+            //error
+            if let error = error {
+                print("Error uploading data to user document. \(error)")
+                handler(nil)
+            } else {
+                //success
+                handler(userID)
+            }
+        }
     }
 }
 
