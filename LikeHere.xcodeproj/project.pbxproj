@@ -15,6 +15,7 @@
 		F24D06842680020C0069DC58 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D06832680020C0069DC58 /* RegisterView.swift */; };
 		F24D06872682A03D0069DC58 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D06862682A03D0069DC58 /* Extensions.swift */; };
 		F24D06892682A06F0069DC58 /* Enum & Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D06882682A06F0069DC58 /* Enum & Structs.swift */; };
+		F24D068C2683EEF60069DC58 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D068B2683EEF60069DC58 /* ImageManager.swift */; };
 		F260345A267AB6AB008C3E51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */; };
 		F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23EE267028E600FDF33A /* PostModel.swift */; };
 		F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */; };
@@ -74,6 +75,7 @@
 		F24D06832680020C0069DC58 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		F24D06862682A03D0069DC58 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F24D06882682A06F0069DC58 /* Enum & Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum & Structs.swift"; sourceTree = "<group>"; };
+		F24D068B2683EEF60069DC58 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2BF23EE267028E600FDF33A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArrayObject.swift; sourceTree = "<group>"; };
@@ -195,6 +197,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		F24D068A2683EEDD0069DC58 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F24D068B2683EEF60069DC58 /* ImageManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		F2BF23ED267028CE00FDF33A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +240,7 @@
 		F2E4002C266CB7E500A206CC /* LikeHere */ = {
 			isa = PBXGroup;
 			children = (
+				F24D068A2683EEDD0069DC58 /* Utilities */,
 				F24D067F267FFDFE0069DC58 /* Services */,
 				F24D067E267FFAE40069DC58 /* LikeHere.entitlements */,
 				F2E4002D266CB7E500A206CC /* LikeHereApp.swift */,
@@ -603,6 +614,7 @@
 				F2E4002E266CB7E500A206CC /* LikeHereApp.swift in Sources */,
 				F2F45CE92675C4A200604465 /* ProfileView.swift in Sources */,
 				F2F45CE72674B53000604465 /* PostImageView.swift in Sources */,
+				F24D068C2683EEF60069DC58 /* ImageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

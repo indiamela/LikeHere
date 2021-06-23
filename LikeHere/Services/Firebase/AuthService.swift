@@ -45,6 +45,7 @@ class AuthService{
         let userID = document.documentID
         
         // Upload profileImage
+        ImageManager.instance.uploadProfileImage(userID: userID, image: profileImage)
         
         // Upload profile data
         let userData: [String: Any] = [
