@@ -32,10 +32,28 @@ class AuthService{
                 handler(nil,true)
                 return
             }
-            
-            //success
             handler(providerID, false)
         }
+    }
+    
+    func logInUserToApp(userID:String, handler: @escaping(_ success: Bool) -> ()) {
+        // Get the user info
+        getUserInfo(userID: userID) { (returnedName, retrunedBio) in
+            if let name = returnedName, let bio = retrunedBio {
+                print("success")
+                handler(true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    // Set to the user defaults
+                    UserDefaults.standard.setValue(userID, forKey: CurrentUserDefaults.userID)
+                    UserDefaults.standard.setValue(name, forKey: CurrentUserDefaults.displayName)
+                    UserDefaults.standard.setValue(bio, forKey: CurrentUserDefaults.bio)
+                }
+            } else {
+                print("error")
+                handler(false)
+            }
+        }
+        
     }
     
     func createNewUserInDatabase(name: String, email: String, provider: String, providerID: String, profileImage: UIImage, handler: @escaping (_ userID: String?)->()) {
@@ -66,6 +84,22 @@ class AuthService{
             } else {
                 //success
                 handler(userID)
+            }
+        }
+    }
+    
+    func getUserInfo(userID: String, handler: @escaping(_ name:String?, _ bio: String?)->()){
+        REF_USERS.document(userID).getDocument { (documentSnapshot, error) in
+            if let document = documentSnapshot,
+               let name = document.get(DatabaseUserField.displayName) as? String,
+               let bio = document.get(DatabaseUserField.bio) as? String{
+                print("success getting user info")
+                handler(userID,bio)
+                return
+            } else {
+                print("error getting user info")
+                handler(nil,nil)
+                return
             }
         }
     }

@@ -12,6 +12,7 @@ struct ContentView: View {
     var login:Bool = false
 
     @State var checkIn: Bool = false
+    @AppStorage(CurrentUserDefaults.userID) var currentUserID: String?
     
     
     var body: some View {

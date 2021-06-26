@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State var showImagePicker: Bool = false
     @State var showError: Bool = false
 
@@ -75,10 +76,25 @@ struct RegisterView: View {
         AuthService.instance.createNewUserInDatabase(name: displayName, email: email, provider: provider, providerID:providerID, profileImage: imageSelected) { (returnedUserID) in
             if let userID = returnedUserID {
                 //success
+                print("Success create new user to Database")
+                //login
+                AuthService.instance.logInUserToApp(userID: userID) { (success) in
+                    if success {
+                        print("success logging in")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    } else {
+                        //error
+                        print("Error logging in")
+                        self.showError.toggle()
+                    }
+                }
+                
                 
             } else {
                 //error
-                print("Error logging in")
+                print("Error create new user to Database")
                 self.showError.toggle()
             }
         }
