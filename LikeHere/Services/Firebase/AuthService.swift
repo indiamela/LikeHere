@@ -72,7 +72,7 @@ class AuthService{
             DatabaseUserField.providerID : providerID,
             DatabaseUserField.provider : provider,
             DatabaseUserField.userID : userID,
-            DatabaseUserField.bio : "",
+            DatabaseUserField.displayAddress : "",
             DatabaseUserField.dataCreated : FieldValue.serverTimestamp()
         ]
         
@@ -92,9 +92,9 @@ class AuthService{
         REF_USERS.document(userID).getDocument { (documentSnapshot, error) in
             if let document = documentSnapshot,
                let name = document.get(DatabaseUserField.displayName) as? String,
-               let bio = document.get(DatabaseUserField.bio) as? String{
+               let bio = document.get(DatabaseUserField.displayAddress) as? String{
                 print("success getting user info")
-                handler(userID,bio)
+                handler(name,bio)
                 return
             } else {
                 print("error getting user info")
@@ -102,6 +102,16 @@ class AuthService{
                 return
             }
         }
+    }
+    
+    func logOutUser(handler: @escaping(_ success: Bool) -> ()){
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("error\(error)")
+            handler(false)
+        }
+        handler(true)
     }
 }
 

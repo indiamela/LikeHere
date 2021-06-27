@@ -16,6 +16,7 @@ struct SettingsView: View {
     @Binding var userDisplayAddress:String
     @Binding var userProfilePicture: UIImage
     
+    
     var body: some View {
         NavigationView{
             ScrollView{
@@ -72,7 +73,22 @@ struct SettingsView: View {
     }
     
     func signOut(){
-        
+        AuthService.instance.logOutUser { success in
+            if success {
+                print("success log out")
+                self.presentationMode.wrappedValue.dismiss()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    let defaultsDictionaly = UserDefaults.standard.dictionaryRepresentation()
+                    defaultsDictionaly.keys.forEach { (key) in
+                        UserDefaults.standard.removeObject(forKey: key)
+                    }
+                }
+            } else {
+                print("error log out")
+                self.showSignOutError.toggle()
+
+            }
+        }
     }
     
     func openCustomURL(urlString:String){

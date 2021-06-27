@@ -50,7 +50,7 @@ struct RegisterView: View {
                     .padding()
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
-                    .background(Color.yellow)
+                    .background(Color.gray)
                     .cornerRadius(12)
                     .padding(.horizontal)
             })
@@ -63,7 +63,7 @@ struct RegisterView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.yellow)
         .edgesIgnoringSafeArea(.all)
-        .sheet(isPresented: $showImagePicker, content: {
+        .sheet(isPresented: $showImagePicker, onDismiss: createProfile ,content: {
             ImagePicker(imageselected: $imageSelected, sourceType: $sourceType)
         })
         .alert(isPresented: $showError) { () -> Alert in

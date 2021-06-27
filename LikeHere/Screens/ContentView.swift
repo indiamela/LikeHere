@@ -13,42 +13,41 @@ struct ContentView: View {
 
     @State var checkIn: Bool = false
     @AppStorage(CurrentUserDefaults.userID) var currentUserID: String?
+    @AppStorage(CurrentUserDefaults.displayName) var currentDisplayName: String?
     
     
     var body: some View {
-        ZStack(alignment:.trailing){
-            TabView{
-                NavigationView{
-                    HomeView(posts: PostArrayObject())
-                }
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Home")
-                }
-                NavigationView{
-                    DiscoverView()
-                }
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Browse")
-                }
-
-                ZStack{
-                    if checkIn {
-                        NavigationView{
-                            ProfileView()
-                        }
-                    } else {
-                        SignUpView()
+        TabView{
+            NavigationView{
+                HomeView(posts: PostArrayObject())
+            }
+            .tabItem {
+                Image(systemName: "house.fill")
+                Text("Home")
+            }
+            NavigationView{
+                DiscoverView()
+            }
+            .tabItem {
+                Image(systemName: "magnifyingglass")
+                Text("Browse")
+            }
+            
+            ZStack{
+                if let userID = currentUserID, let displayName = currentDisplayName {
+                    NavigationView{
+                        ProfileView(isMyProfile: true, userID: userID, userDisplayName: displayName)
                     }
-                }
-                .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("Profile")
+                } else {
+                    SignUpView()
                 }
             }
-            .accentColor(.black)
+            .tabItem {
+                Image(systemName: "person.fill")
+                Text("Profile")
+            }
         }
+        .accentColor(.black)
         .sheet(isPresented: $checkIn, content: {
             SignUpView()
         })

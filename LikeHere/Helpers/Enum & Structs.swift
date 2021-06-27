@@ -14,7 +14,7 @@ struct DatabaseUserField { //Fields within the User Document in Database
     static let providerID = "provider_id"
     static let provider = "provider"
     static let userID = "user_id"
-    static let bio = "bio"
+    static let displayAddress = "display_address"
     static let dataCreated = "data_created"
     
 }

@@ -11,14 +11,15 @@ import WaterfallGrid
 struct ProfileView: View {
     @State var isMyProfile = true
     @State var settingsView = false
-    @State var userDisplayName = ""
+    @State var userID: String
+    @State var userDisplayName: String
     @State var userDisplayAddress = ""
     @State var userProfilePicture = UIImage(named: "dog1")!
 
     
     var body: some View {
         VStack{
-            ProfileHeaderView()
+            ProfileHeaderView(displayName: userDisplayName, displayPicture: userProfilePicture, displayAddress: userDisplayAddress)
             Divider()
             ScrollView(showsIndicators: true) {
                 WaterfallGrid((1..<8), id: \.self) { index in
@@ -53,7 +54,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            ProfileView()
+            ProfileView(userID: "", userDisplayName: "")
         }
     }
 }
