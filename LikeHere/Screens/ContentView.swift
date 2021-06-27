@@ -9,9 +9,7 @@ import UIKit
 import SwiftUI
 
 struct ContentView: View {
-    var login:Bool = false
-
-    @State var checkIn: Bool = false
+//    @State var loggedIn: Bool = false
     @AppStorage(CurrentUserDefaults.userID) var currentUserID: String?
     @AppStorage(CurrentUserDefaults.displayName) var currentDisplayName: String?
     
@@ -48,9 +46,9 @@ struct ContentView: View {
             }
         }
         .accentColor(.black)
-        .sheet(isPresented: $checkIn, content: {
-            SignUpView()
-        })
+//        .sheet(isPresented: $loggedIn, content: {
+//            SignUpView()
+//        })
     }
     
 }

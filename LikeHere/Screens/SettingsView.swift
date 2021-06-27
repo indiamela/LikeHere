@@ -27,9 +27,9 @@ struct SettingsView: View {
                             SettingRollView(leftIcon: "pencil", text: "Display Name", color: Color.gray)
                         })
                     NavigationLink(
-                        destination: SettingEditTextView(submissionText: "userDisplayAddress", title: "Profile Address", description: "Your bio is a great place to let other users know a little about you", placeholder: "Your bio here...", profileText: $userDisplayAddress),
+                        destination: SettingEditTextView(submissionText: "userDisplayAddress", title: "Profile Address", description: "Your address is a great place to let other users know a little about you", placeholder: "Your address here...", profileText: $userDisplayAddress),
                         label: {
-                            SettingRollView(leftIcon: "text.quote", text: "Bio", color: Color.gray)
+                            SettingRollView(leftIcon: "text.quote", text: "Address", color: Color.gray)
                         })
                     NavigationLink(
                         destination: SettingEditImageView(title: "Profile Picrure", description: "Your profile picrture will be shown on your profile ad on your posts. Most users make it an image of themselves or of their dog!", selectedImage: userProfilePicture, profileImage: $userProfilePicture),
