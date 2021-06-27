@@ -17,36 +17,45 @@ class AuthService{
     
     private var REF_USERS = DB_BASE.collection("users")  // usersコレクション
     
-    func logInUserToFirebase(credential: AuthCredential,handler: @escaping(_ providerID: String?, _ isError: Bool) -> ()){
+    func logInUserToFirebase(credential: AuthCredential, handler: @escaping (_ providerID: String?, _ isError:Bool, _ isNewUser: Bool?, _ userID: String?)->())  {
         
-        Auth.auth().signIn(with: credential) { (result, error) in
-            // check error
-            if error != nil {
+        //Check for errors
+        Auth.auth().signIn(with: credential){(result,error) in
+            if error != nil{
                 print("Error logging in to Firebase")
-                handler(nil,true)
+                handler(nil,true,nil,nil)
+                return
+            }
+            guard let providerID = result?.user.uid else {
+                print("Error getting provider ID")
+                handler(nil,true,nil,nil)
                 return
             }
             
-            guard let providerID = result?.user.uid else {
-                print("Error getting provider ID")
-                handler(nil,true)
-                return
+            self.checkIfUserExistsInDatabase(providerID: providerID) { (returnedUserID) in
+                if let userID = returnedUserID {
+                    // User exists, log in to app imediately
+                    handler(providerID,false,false,userID)
+                } else {
+                    // User does NOT exist, continue to onboading a new user
+                    handler(providerID,false,true,nil)
+                }
             }
-            handler(providerID, false)
         }
+        
     }
     
     func logInUserToApp(userID:String, handler: @escaping(_ success: Bool) -> ()) {
         // Get the user info
-        getUserInfo(userID: userID) { (returnedName, retrunedBio) in
-            if let name = returnedName, let bio = retrunedBio {
+        getUserInfo(userID: userID) { (returnedName, retrunedAddress) in
+            if let name = returnedName, let address = retrunedAddress {
                 print("success")
                 handler(true)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                     // Set to the user defaults
                     UserDefaults.standard.setValue(userID, forKey: CurrentUserDefaults.userID)
                     UserDefaults.standard.setValue(name, forKey: CurrentUserDefaults.displayName)
-                    UserDefaults.standard.setValue(bio, forKey: CurrentUserDefaults.bio)
+                    UserDefaults.standard.setValue(address, forKey: CurrentUserDefaults.displayAddress)
                 }
             } else {
                 print("error")
@@ -54,6 +63,21 @@ class AuthService{
             }
         }
         
+    }
+    
+    private func checkIfUserExistsInDatabase(providerID: String, handler: @escaping(_ existingUserID: String?)->()){
+        REF_USERS.whereField(DatabaseUserField.providerID, isEqualTo: providerID).getDocuments { (querrySnapshot,error) in
+            if let snapshot = querrySnapshot, snapshot.count > 0,
+               let document = snapshot.documents.first {
+                let existingUserID = document.documentID
+                handler(existingUserID)
+                return
+            } else {
+                // ERROR, NEW USER
+                handler(nil)
+                return
+            }
+        }
     }
     
     func createNewUserInDatabase(name: String, email: String, provider: String, providerID: String, profileImage: UIImage, handler: @escaping (_ userID: String?)->()) {
@@ -88,13 +112,13 @@ class AuthService{
         }
     }
     
-    func getUserInfo(userID: String, handler: @escaping(_ name:String?, _ bio: String?)->()){
+    func getUserInfo(userID: String, handler: @escaping(_ name:String?, _ displayAddress: String?)->()){
         REF_USERS.document(userID).getDocument { (documentSnapshot, error) in
             if let document = documentSnapshot,
                let name = document.get(DatabaseUserField.displayName) as? String,
-               let bio = document.get(DatabaseUserField.displayAddress) as? String{
+               let displayAddress = document.get(DatabaseUserField.displayAddress) as? String{
                 print("success getting user info")
-                handler(name,bio)
+                handler(name,displayAddress)
                 return
             } else {
                 print("error getting user info")

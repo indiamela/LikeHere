@@ -22,5 +22,5 @@ struct DatabaseUserField { //Fields within the User Document in Database
 struct CurrentUserDefaults {
     static let userID = "user_id"
     static let displayName = "display_name"
-    static let bio = "bio"
+    static let displayAddress = "bio"
 }

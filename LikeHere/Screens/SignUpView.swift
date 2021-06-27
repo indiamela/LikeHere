@@ -11,10 +11,14 @@ import Firebase
 struct SignUpView: View {
     @State var showError = false
     @State var showRegisterView = false
+    @State var showProfileView = false
     @State var displayName: String = ""
     @State var email: String = ""
     @State var providerID: String = ""
     @State var provider: String = ""
+    
+    @AppStorage(CurrentUserDefaults.userID) var currentUserID: String?
+    @AppStorage(CurrentUserDefaults.displayName) var currentUserDisplayName: String?
     
     var body: some View {
         ZStack{
@@ -25,7 +29,7 @@ struct SignUpView: View {
                 .frame(width: UIScreen.main.bounds.width)
                 .clipped()
                 .edgesIgnoringSafeArea(.all)
-
+            
             VStack(alignment:.center){
                 VStack{
                     //Like Here
@@ -55,25 +59,30 @@ struct SignUpView: View {
                             .shadow(radius: 12)
                     })
                     .accentColor(.black)
-                    Button(action: {
-                    }, label: {
-                        Text("Continue as a guest".uppercased())
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .padding()
-                            .frame(height: 60)
-                            .frame(maxWidth:.infinity)
-                            .background(Color.black)
-                            .cornerRadius(12)
-                            .shadow(radius: 12)
-                    })
-                    .accentColor(.white)
+//                    Button(action: {
+//                    }, label: {
+//                        Text("Continue as a guest".uppercased())
+//                            .font(.headline)
+//                            .fontWeight(.bold)
+//                            .padding()
+//                            .frame(height: 60)
+//                            .frame(maxWidth:.infinity)
+//                            .background(Color.black)
+//                            .cornerRadius(12)
+//                            .shadow(radius: 12)
+//                    })
+//                    .accentColor(.white)
                 }
                 .alert(isPresented: $showError, content: {
                     return Alert(title: Text("Error signing in 😢"))
                 })
                 .fullScreenCover(isPresented: $showRegisterView, content: {
                     RegisterView(displayName: $displayName, email: $email, providerID: $providerID, provider: $provider)
+                })
+                .fullScreenCover(isPresented: $showProfileView, content: {
+                    if let userID = currentUserID, let displayName = currentUserDisplayName{
+                        ProfileView(isMyProfile: true, userID: userID, userDisplayName: displayName)
+                    }
                 })
                 .padding(.horizontal,20)
                 .padding(.bottom,50)
@@ -83,21 +92,52 @@ struct SignUpView: View {
     
     func connectToFirebase(name: String, email: String, provider: String, credential: AuthCredential){
         
-        AuthService.instance.logInUserToFirebase(credential: credential) { (returnedProviderID, isError) in
+        AuthService.instance.logInUserToFirebase(credential: credential, handler: {(returnedProviderID, isError,isNewUser,returnedUserId) in
             
-            if let providerID = returnedProviderID, !isError {
-                //success
-                self.displayName = name
-                self.email = email
-                self.provider = provider
-                self.providerID = providerID
-                self.showRegisterView.toggle()
+            if let newUser = isNewUser {
+                
+                if newUser {
+                    // NEW USER
+                    if let providerID = returnedProviderID, !isError {
+                        // SUCCESS
+                        
+                        // New User, continue to the onboading part2
+                        self.displayName = name
+                        self.email = email
+                        self.providerID = providerID
+                        self.provider = provider
+                        self.showRegisterView.toggle()
+                    } else {
+                        // ERROR
+                        print("Error getting into from log in user to Firebase")
+                        self.showError.toggle()
+                    }
+                    
+                } else {
+                    // EXISTING USER
+                    if let userID = returnedUserId {
+                        // SUCCESS, LOG IN TO APP
+                        AuthService.instance.logInUserToApp(userID: userID) { (success) in
+                            if success {
+                                print ("Successful log in existing user")
+                                self.showProfileView.toggle()
+                            } else {
+                                print("Error getting into from log in user to Firebase")
+                                self.showError.toggle()
+                            }
+                        }
+                    } else {
+                        // ERROR
+                        print("Error getting into from log in user to Firebase")
+                        self.showError.toggle()
+                    }
+                }
             } else {
-                //error
+                // ERROR
                 print("Error getting into from log in user to Firebase")
                 self.showError.toggle()
             }
-        }
+        })
     }
 }
 
