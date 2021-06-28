@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PostImageView: View {
     @Environment(\.presentationMode) var presentationMode
+    @AppStorage(CurrentUserDefaults.userID) var userID: String?
+    @AppStorage(CurrentUserDefaults.displayName) var displayName: String?
     @State var selection: Int = 0
     @State var captionText = ""
     @State var addressText = ""
@@ -104,7 +106,7 @@ struct PostImageView: View {
 
                                 
                 Button(action: {
-                    
+                    postPicture()
                 }, label: {
                     Text("Post Picture!".uppercased())
                         .font(.title3)
@@ -123,6 +125,13 @@ struct PostImageView: View {
     
     func postPicture(){
         print("POST PICTURE TO DATABASE HERE")
+        guard let currentUserID = userID, let CurrentUserDisplayName = displayName else {
+            print("Error getting userID & displayname")
+            return
+        }
+        DataService.instance.uploadPost(image: imageSelected, address: addressText, tag: selection, caption: captionText, displayName: CurrentUserDisplayName, userID: currentUserID) { (success) in
+            print("Succcess ")
+        }
     }
 
     func categoryName(_ index:Int) -> String{

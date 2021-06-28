@@ -19,12 +19,26 @@ class ImageManager {
         uploadImage(path: path, image: image) { (_) in}
     }
     
+    func uploadPostImage(postID: String, image: UIImage, handler: @escaping(_ success: Bool)->()) {
+        
+        let path = getPostImagePath(postID: postID)
+        uploadImage(path: path, image: image) { (success) in
+            handler(success)
+        }
+    }
+    
     // MARK: PRIVATE FUNCTIONS
     // Functions we call from this file only
     
     private func getProfileImagePath(userID: String)-> StorageReference {
         let userPath = "users/\(userID)/profile"
         let storagePath = REF_STOR.reference(withPath: userPath)
+        return storagePath
+    }
+    
+    private func getPostImagePath(postID: String)-> StorageReference {
+        let postPath = "posts/\(postID)/1"
+        let storagePath = REF_STOR.reference(withPath: postPath)
         return storagePath
     }
     
