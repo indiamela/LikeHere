@@ -10,6 +10,7 @@ import SwiftUI
 struct PostView: View {
     
     @State var post: PostModel
+    @State var postImage: UIImage = UIImage(named:"logo.loading")!
     
     var body: some View {
         VStack(alignment:.leading){
@@ -61,7 +62,7 @@ struct PostView: View {
                 })
                 .accentColor(.green)
                 
-                    //comment
+                //comment
                 NavigationLink(
                     destination: CommentsView(post: post),
                     label: {
@@ -72,6 +73,7 @@ struct PostView: View {
                 
                 Button(action: {
                     //share
+                    sharePost()
                 }, label: {
                     Image(systemName: "paperplane")
                         .font(.title2)
@@ -107,6 +109,17 @@ struct PostView: View {
             }
         }
         .padding(.vertical,5)
+    }
+    
+    func sharePost() {
+        let message = "Check out this post on LikeHere!"
+        let image = postImage
+        let address = post.address ?? ""
+        
+        let activityViewController = UIActivityViewController(activityItems: [message,image,address], applicationActivities: nil)
+        
+        let viewController = UIApplication.shared.windows.first?.rootViewController
+        viewController?.present(activityViewController, animated: true, completion: nil)
     }
 }
 

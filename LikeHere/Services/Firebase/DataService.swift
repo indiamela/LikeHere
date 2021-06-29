@@ -26,9 +26,9 @@ class DataService {
                     DatabasePostField.name: displayName,
                     DatabasePostField.postID: postID,
                     DatabasePostField.userID: userID,
-                    DatabasePostField.address: address,
+                    DatabasePostField.address: address ?? "",
                     DatabasePostField.tag: tag,
-                    DatabasePostField.caption: caption,
+                    DatabasePostField.caption: caption ?? "",
                     DatabasePostField.dataCreated: FieldValue.serverTimestamp()
                 ]
                 
