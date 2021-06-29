@@ -23,7 +23,7 @@ struct DatabasePostField { //Fields within the User Document in Database
     
     static let name = "display_name"
     static let userID = "user_id"
-    static let address = "display_address"
+    static let address = "address"
     static let tag = "tag"
     static let caption = "caption"
     static let dataCreated = "data_created"

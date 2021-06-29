@@ -15,6 +15,8 @@ struct PostImageView: View {
     @State var captionText = ""
     @State var addressText = ""
     @Binding var imageSelected: UIImage
+    @State var successPostImage = false
+    @State var showAlart = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 0, content: {
@@ -121,6 +123,9 @@ struct PostImageView: View {
                 })
             })
         })
+        .alert(isPresented: $showAlart) { () -> Alert in
+            getAlert()
+        }
     }
     
     func postPicture(){
@@ -130,7 +135,21 @@ struct PostImageView: View {
             return
         }
         DataService.instance.uploadPost(image: imageSelected, address: addressText, tag: selection, caption: captionText, displayName: CurrentUserDisplayName, userID: currentUserID) { (success) in
-            print("Succcess ")
+            successPostImage = true
+            showAlart.toggle()
+            print("Succcess post picture")
+        }
+    }
+    
+    func getAlert() -> Alert {
+        if successPostImage {
+            return Alert(title: Text("投稿しました"),dismissButton: .default(Text("OK"), action: {
+                presentationMode.wrappedValue.dismiss()
+            }))
+        } else {
+            return Alert(title: Text("投稿できませんでした"),message: Text("通信環境を確認して再度お試しください"),dismissButton: .default(Text("OK"), action: {
+                presentationMode.wrappedValue.dismiss()
+            }))
         }
     }
 
