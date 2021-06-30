@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseStorage
 
+let imageCache = NSCache<AnyObject, UIImage>()
+
 class ImageManager {
     static let instance = ImageManager()
     private var REF_STOR = Storage.storage()
@@ -22,9 +24,24 @@ class ImageManager {
     func uploadPostImage(postID: String, image: UIImage, handler: @escaping(_ success: Bool)->()) {
         
         let path = getPostImagePath(postID: postID)
-        uploadImage(path: path, image: image) { (success) in
-            handler(success)
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.uploadImage(path: path, image: image) { (success) in
+                handler(success)
+            }
         }
+    }
+    
+    func downloadingProfileImage(userID: String, handler:@escaping(_ image:UIImage?) -> ()){
+        
+        let path = getProfileImagePath(userID: userID)
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.downloadImage(path: path) { (returnedImage) in
+                DispatchQueue.main.async {
+                    handler(returnedImage)
+                }
+            }
+        }
+        
     }
     
     // MARK: PRIVATE FUNCTIONS
@@ -40,6 +57,28 @@ class ImageManager {
         let postPath = "posts/\(postID)/1"
         let storagePath = REF_STOR.reference(withPath: postPath)
         return storagePath
+    }
+    
+    private func downloadImage(path: StorageReference, handler: @escaping (_ image: UIImage?) -> ()){
+        if let cachedImage = imageCache.object(forKey: path) {
+            print("Image found in cache")
+            handler(cachedImage)
+            return
+        } else {
+            path.getData(maxSize: 27 * 1024 * 1024) { (returnedImage, error) in
+                if let data = returnedImage, let image = UIImage(data: data) {
+                    //success
+                    imageCache.setObject(image, forKey: path)
+                    handler(image)
+                    return
+                } else {
+                    //false
+                    print("Error getting image")
+                    handler(nil)
+                    return
+                }
+            }
+        }
     }
     
     private func uploadImage(path: StorageReference, image: UIImage, handler: @escaping(_ success: Bool)-> ()){

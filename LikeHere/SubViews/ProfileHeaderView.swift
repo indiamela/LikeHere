@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileHeaderView: View {
     @State var displayName:String
-    @State var displayPicture: UIImage!
+    @Binding var displayPicture: UIImage
     @State var displayAddress: String = ""
     
     var body: some View {

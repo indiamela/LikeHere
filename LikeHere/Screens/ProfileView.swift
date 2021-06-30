@@ -14,12 +14,12 @@ struct ProfileView: View {
     @State var userID: String
     @State var userDisplayName: String
     @State var userDisplayAddress = ""
-    @State var userProfilePicture = UIImage(named: "dog1")!
+    @State var userProfilePicture = UIImage(named: "logo.loading")!
 
     
     var body: some View {
         VStack{
-            ProfileHeaderView(displayName: userDisplayName, displayPicture: userProfilePicture, displayAddress: userDisplayAddress)
+            ProfileHeaderView(displayName: userDisplayName, displayPicture: $userProfilePicture, displayAddress: userDisplayAddress)
             Divider()
             ScrollView(showsIndicators: true) {
                 WaterfallGrid((1..<8), id: \.self) { index in
@@ -48,6 +48,17 @@ struct ProfileView: View {
         .sheet(isPresented: $settingsView, content: {
             SettingsView(userDisplayName: $userDisplayName, userDisplayAddress: $userDisplayAddress, userProfilePicture: $userProfilePicture)
         })
+        .onAppear(perform: {
+            getProfileImage()
+        })
+    }
+    
+    func getProfileImage() {
+        ImageManager.instance.downloadingProfileImage(userID: userID) { (returnedImage) in
+            if let image = returnedImage {
+                self.userProfilePicture = image
+            }
+        }
     }
 }
 
