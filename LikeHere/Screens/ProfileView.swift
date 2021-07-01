@@ -50,6 +50,7 @@ struct ProfileView: View {
         })
         .onAppear(perform: {
             getProfileImage()
+            getUserProfile()
         })
     }
     
@@ -57,6 +58,17 @@ struct ProfileView: View {
         ImageManager.instance.downloadingProfileImage(userID: userID) { (returnedImage) in
             if let image = returnedImage {
                 self.userProfilePicture = image
+            }
+        }
+    }
+    
+    func getUserProfile() {
+        AuthService.instance.getUserInfo(userID: userID) { (returnedName,returnedAddress)  in
+            if let name = returnedName {
+                self.userDisplayName = name
+            }
+            if let address = returnedAddress {
+                self.userDisplayAddress = address
             }
         }
     }
