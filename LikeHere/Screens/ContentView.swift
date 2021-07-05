@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         TabView{
             NavigationView{
-                HomeView(posts: PostArrayObject())
+                HomeView(posts: PostArrayObject(userID: <#String#>))
             }
             .tabItem {
                 Image(systemName: "house.fill")

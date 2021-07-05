@@ -17,8 +17,8 @@ struct PostModel:Hashable,Identifiable{
     var caption: String?
     var address: String?
     var dateCreated: Date
-    var likeCount: Int
-    var goneCount: Int
+    var likeCount: String
+    var goneCount: String
     var likeByUser: Bool
     var goneByUser: Bool
     
