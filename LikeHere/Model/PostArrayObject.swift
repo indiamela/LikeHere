@@ -41,4 +41,9 @@ class PostArrayObject:ObservableObject{
         }
     }
     
+    init(userID: String) {
+        print("FETCH FROM DATABASE")
+        
+    }
+    
 }
