@@ -74,7 +74,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            HomeView(posts: PostArrayObject())
+            HomeView(posts: PostArrayObject(shuffled: true))
         }
     }
 }

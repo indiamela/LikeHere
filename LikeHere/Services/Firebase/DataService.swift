@@ -18,7 +18,13 @@ class DataService {
     
     func downloadPostForFeed(handler:@escaping(_ posts:[PostModel])->()) {
         REF_POSTS.order(by: DatabasePostField.dataCreated,descending: true).limit(to: 50).getDocuments { (QuerrySnapshot, error) in
-            self.getPostsFromSnapshot(querySnapshot: QuerrySnapshot)
+            handler(self.getPostsFromSnapshot(querySnapshot: QuerrySnapshot))
+        }
+    }
+    
+    func downloadPostForUser(userID: String, handler: @escaping(_ posts:[PostModel]) -> ()){
+        REF_POSTS.whereField(DatabasePostField.userID, isEqualTo: userID).getDocuments { (querySnapshot, error) in
+            handler(self.getPostsFromSnapshot(querySnapshot: querySnapshot))
         }
     }
     
@@ -38,8 +44,11 @@ class DataService {
                     
                     var likeByUser: Bool = false
                     var goneByUser: Bool = false
-                    if let ueerIDArray = document.get(DatabasePostField.likeByUser) as? [String], let userID = currentUserID {
-                        likeByUser = ueerIDArray.contains(userID)
+                    if let likeUserIDArray = document.get(DatabasePostField.likeByUser) as? [String], let userID = currentUserID {
+                        likeByUser = likeUserIDArray.contains(userID)
+                    }
+                    if let goneUserIDArray = document.get(DatabasePostField.goneByUser) as? [String], let userID = currentUserID {
+                        goneByUser = goneUserIDArray.contains(userID)
                     }
                     
                     let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName,caption: caption, dateCreated: date, likeCount: likeCount, goneCount:goneCount, likeByUser: likeByUser, goneByUser: goneByUser)

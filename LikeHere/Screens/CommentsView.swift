@@ -61,7 +61,7 @@ struct CommentsView: View {
 
 struct CommentsView_Previews: PreviewProvider {
     static var previews: some View {
-        CommentsView(post: PostModel(tag: "", postID: "", userID: "", username: "displayName", dateCreated: Date(), likeCount: 0, goneCount: 0, likeByUser: true, goneByUser: true))
+        CommentsView(post: PostModel(tag: "", postID: "", userID: "", username: "displayName", dateCreated: Date(), likeCount: "0", goneCount: "0", likeByUser: true, goneByUser: true))
     }
 }
 

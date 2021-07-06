@@ -15,6 +15,7 @@ struct ProfileView: View {
     @State var userDisplayName: String
     @State var userDisplayAddress = ""
     @State var userProfilePicture = UIImage(named: "logo.loading")!
+    @ObservedObject var postArray:PostArrayObject
 
     
     var body: some View {
@@ -77,7 +78,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            ProfileView(userID: "", userDisplayName: "")
+            ProfileView(userID: "", userDisplayName: "", postArray: PostArrayObject(userID: <#T##String#>))
         }
     }
 }
