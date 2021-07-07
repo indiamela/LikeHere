@@ -81,7 +81,7 @@ struct SignUpView: View {
                 })
                 .fullScreenCover(isPresented: $showProfileView, content: {
                     if let userID = currentUserID, let displayName = currentUserDisplayName{
-                        ProfileView(isMyProfile: true, userID: userID, userDisplayName: displayName)
+                        ProfileView(isMyProfile: true, profileUserID: userID, userDisplayName: displayName, posts: PostArrayObject(userID: userID))
                     }
                 })
                 .padding(.horizontal,20)

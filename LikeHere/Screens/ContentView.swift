@@ -34,7 +34,7 @@ struct ContentView: View {
             ZStack{
                 if let userID = currentUserID, let displayName = currentDisplayName {
                     NavigationView{
-                        ProfileView(isMyProfile: true, userID: userID, userDisplayName: displayName)
+                        ProfileView(isMyProfile: true, profileUserID: userID, userDisplayName: displayName, posts: PostArrayObject(userID: userID))
                     }
                 } else {
                     SignUpView()

@@ -44,6 +44,17 @@ class ImageManager {
         
     }
     
+    func downloadPostImage(postID: String, handler: @escaping(_ image: UIImage?) -> ()) {
+        let path = getPostImagePath(postID: postID)
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.downloadImage(path: path) { (returnedImage) in
+                DispatchQueue.main.async {
+                    handler(returnedImage)
+                }
+            }
+        }
+    }
+    
     // MARK: PRIVATE FUNCTIONS
     // Functions we call from this file only
     

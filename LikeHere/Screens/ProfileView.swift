@@ -11,11 +11,12 @@ import WaterfallGrid
 struct ProfileView: View {
     @State var isMyProfile = true
     @State var settingsView = false
-    @State var userID: String
+    var profileUserID: String
     @State var userDisplayName: String
     @State var userDisplayAddress = ""
     @State var userProfilePicture = UIImage(named: "logo.loading")!
-    @ObservedObject var postArray:PostArrayObject
+    
+    var posts:PostArrayObject
 
     
     var body: some View {
@@ -56,7 +57,7 @@ struct ProfileView: View {
     }
     
     func getProfileImage() {
-        ImageManager.instance.downloadingProfileImage(userID: userID) { (returnedImage) in
+        ImageManager.instance.downloadingProfileImage(userID: profileUserID) { (returnedImage) in
             if let image = returnedImage {
                 self.userProfilePicture = image
             }
@@ -64,7 +65,7 @@ struct ProfileView: View {
     }
     
     func getUserProfile() {
-        AuthService.instance.getUserInfo(userID: userID) { (returnedName,returnedAddress)  in
+        AuthService.instance.getUserInfo(userID: profileUserID) { (returnedName,returnedAddress)  in
             if let name = returnedName {
                 self.userDisplayName = name
             }
@@ -78,7 +79,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            ProfileView(userID: "", userDisplayName: "", postArray: PostArrayObject(userID: <#T##String#>))
+            ProfileView(profileUserID: "", userDisplayName: "", posts: PostArrayObject(userID: ""))
         }
     }
 }

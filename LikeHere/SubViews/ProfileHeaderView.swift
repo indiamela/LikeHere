@@ -78,6 +78,6 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(userID: "", userDisplayName: "")
+        ProfileView(profileUserID: "", userDisplayName: "", posts: PostArrayObject(userID: ""))
     }
 }

@@ -11,13 +11,14 @@ struct PostView: View {
     
     @State var post: PostModel
     @State var postImage: UIImage = UIImage(named:"logo.loading")!
+    @State var profileImage: UIImage = UIImage(named: "logo.loading")!
     
     var body: some View {
         VStack(alignment:.leading){
             // MARK: - HEADER
             HStack{
                 //Ellipse 12
-                Image("dog1")
+                Image(uiImage: profileImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 30, height: 30)
@@ -37,7 +38,7 @@ struct PostView: View {
             .padding(.top,10)
             
             // MARK: - IMAGE
-            Image("place6")
+            Image(uiImage:postImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth:.infinity, maxHeight: 300)
@@ -109,6 +110,23 @@ struct PostView: View {
             }
         }
         .padding(.vertical,5)
+        .onAppear{
+            
+        }
+    }
+    
+    func getImages() {
+        ImageManager.instance.downloadingProfileImage(userID: post.userID) { (returnedImage) in
+            if let image = returnedImage {
+                self.profileImage = image
+            }
+        }
+        
+        ImageManager.instance.downloadPostImage(postID: post.postID) { (returnedImage) in
+            if let image = returnedImage {
+                self.postImage = image
+            }
+        }
     }
     
     func sharePost() {
