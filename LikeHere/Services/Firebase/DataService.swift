@@ -37,21 +37,22 @@ class DataService {
                 if let userID = document.get(DatabasePostField.userID) as? String, let displayName = document.get(DatabasePostField.displayName) as? String, let timeStamp = document.get(DatabasePostField.dataCreated) as? Timestamp {
                     let caption = document.get(DatabasePostField.caption) as? String
                     let date = timeStamp.dateValue()
-                    let tag = document.get(DatabasePostField.tag) as? String ?? "0"
+                    let tag = document.get(DatabasePostField.tag) as? Int ?? 0
                     
-                    let likeCount = document.get(DatabasePostField.likeCount) as? String ?? "0"
-                    let goneCount = document.get(DatabasePostField.goneCount) as? String ?? "0"
+//                    let likeCount = document.get(DatabasePostField.likeCount) as? String ?? "0"
+//                    let goneCount = document.get(DatabasePostField.goneCount) as? String ?? "0"
+//
+//                    var likeByUser: Bool = false
+//                    var goneByUser: Bool = false
+//                    if let likeUserIDArray = document.get(DatabasePostField.likeByUser) as? [String], let userID = currentUserID {
+//                        likeByUser = likeUserIDArray.contains(userID)
+//                    }
+//                    if let goneUserIDArray = document.get(DatabasePostField.goneByUser) as? [String], let userID = currentUserID {
+//                        goneByUser = goneUserIDArray.contains(userID)
+//                    }
                     
-                    var likeByUser: Bool = false
-                    var goneByUser: Bool = false
-                    if let likeUserIDArray = document.get(DatabasePostField.likeByUser) as? [String], let userID = currentUserID {
-                        likeByUser = likeUserIDArray.contains(userID)
-                    }
-                    if let goneUserIDArray = document.get(DatabasePostField.goneByUser) as? [String], let userID = currentUserID {
-                        goneByUser = goneUserIDArray.contains(userID)
-                    }
-                    
-                    let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName,caption: caption, dateCreated: date, likeCount: likeCount, goneCount:goneCount, likeByUser: likeByUser, goneByUser: goneByUser)
+//                    let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName,caption: caption, dateCreated: date, likeCount: likeCount, goneCount:goneCount, likeByUser: likeByUser, goneByUser: goneByUser)
+                    let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName,caption: caption, dateCreated: date)
                     postArray.append(newPost)
                 }
             }

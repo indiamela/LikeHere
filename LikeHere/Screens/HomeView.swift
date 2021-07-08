@@ -34,7 +34,7 @@ struct HomeView: View {
                         .font(.system(size: 50))
                         .foregroundColor(.black)
                 })
-                .padding(.bottom, 50)
+                .padding(.bottom, 30)
                 .padding(.trailing,40)
                 .actionSheet(isPresented: $showAlert) {
                     ActionSheet(title: Text("Upload New Photo"), message: nil, buttons: [
