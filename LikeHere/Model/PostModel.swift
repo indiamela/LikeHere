@@ -17,10 +17,10 @@ struct PostModel:Hashable,Identifiable{
     var caption: String?
     var address: String?
     var dateCreated: Date
-    var likeCount: String?
-    var goneCount: String?
-    var likeByUser: Bool?
-    var goneByUser: Bool?
+    var likeCount: Int
+    var goneCount: Int
+    var likeByUser: Bool
+    var goneByUser: Bool
     
     func hash(into hasher: inout Hasher){
         hasher.combine(id)

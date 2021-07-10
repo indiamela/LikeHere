@@ -10,8 +10,9 @@ import SwiftUI
 struct PostView: View {
     
     @State var post: PostModel
-    @State var postImage: UIImage = UIImage(named:"place1")!
+    @State var postImage: UIImage = UIImage(named:"logo.loading")!
     @State var profileImage: UIImage = UIImage(named: "logo.loading")!
+    @AppStorage(CurrentUserDefaults.userID) var currentUserID:String?
     var showHeaderAndFooter:Bool
     
     var body: some View {
@@ -52,10 +53,8 @@ struct PostView: View {
                         Image(systemName: "mappin.and.ellipse")
                             .font(.title3)
                             .accentColor(.black)
-                        //Plaece Addless
                         Text(address)
                             .font(.custom("Roboto Regular", size: 14))
-                            .foregroundColor(Color.MyTheme.grayColor)
                     }
                     .padding(.horizontal,20)
                     .padding(.top,5)
@@ -63,17 +62,27 @@ struct PostView: View {
                 
                 HStack(alignment: .bottom, spacing: 20){
                     Button(action: {
-                        //want to go
+                        //like
+                        if post.likeByUser {
+                            unlikePost()
+                        } else {
+                            likePost()
+                        }
                     }, label: {
-                        Image(systemName: "hand.thumbsup")
+                        Image(systemName: post.likeByUser ? "hand.thumbsup.fill" : "hand.thumbsup")
                             .font(.title2)
                     })
                     .accentColor(.red)
                     
                     Button(action: {
-                        //went
+                        //gone
+                        if post.goneByUser {
+                            notGonePost()
+                        } else {
+                            gonePost()
+                        }
                     }, label: {
-                        Image(systemName: "flag")
+                        Image(systemName: post.goneByUser ? "flag.fill" : "flag")
                             .font(.title2)
                     })
                     .accentColor(.green)
@@ -117,6 +126,50 @@ struct PostView: View {
         }
     }
     
+    func likePost() {
+        guard let userID = currentUserID else {
+            print("Cannot find userID while liking post")
+            return
+        }
+        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount + 1, goneCount: post.goneCount, likeByUser: true, goneByUser: post.goneByUser)
+        
+        self.post = updatePost
+        DataService.instance.likePost(postID: post.postID, currentUserID: userID)
+    }
+    
+    func unlikePost() {
+        guard let userID = currentUserID else {
+            print("Cannot find userID while liking post")
+            return
+        }
+        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount - 1, goneCount: post.goneCount, likeByUser: false, goneByUser: post.goneByUser)
+        
+        self.post = updatePost
+        DataService.instance.unlikePost(postID: post.postID, currentUserID: userID)
+    }
+    
+    func gonePost() {
+        guard let userID = currentUserID else {
+            print("Cannot find userID while liking post")
+            return
+        }
+        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount, goneCount: post.goneCount + 1, likeByUser: post.likeByUser, goneByUser: true)
+        
+        self.post = updatePost
+        DataService.instance.gonePost(postID: post.postID, currentUserID: userID)
+    }
+    
+    func notGonePost() {
+        guard let userID = currentUserID else {
+            print("Cannot find userID while liking post")
+            return
+        }
+        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount, goneCount: post.goneCount - 1, likeByUser: post.likeByUser, goneByUser: false)
+        
+        self.post = updatePost
+        DataService.instance.notGonePost(postID: post.postID, currentUserID: userID)
+    }
+    
     func getImages() {
         ImageManager.instance.downloadingProfileImage(userID: post.userID) { (returnedImage) in
             if let image = returnedImage {
@@ -144,7 +197,7 @@ struct PostView: View {
 }
 
 struct PostView_Previews: PreviewProvider {
-    static var post = PostModel(tag: 1, postID: "", userID: "", username: "displayName",caption: "小さなお子様連れの旅行では、持ち物がたくさんあるのでつい忘れてしまう物も出てきます。館内にコンビニや売店があれば、もしもの時にすぐに買い物ができるので便利です。",address: "Italy", dateCreated: Date(), likeCount: "5", goneCount: "2", likeByUser: true, goneByUser: true)
+    static var post = PostModel(tag: 1, postID: "", userID: "", username: "displayName",caption: "小さなお子様連れの旅行では、持ち物がたくさんあるのでつい忘れてしまう物も出てきます。館内にコンビニや売店があれば、もしもの時にすぐに買い物ができるので便利です。",address: "Italy", dateCreated: Date(), likeCount: 5, goneCount: 2, likeByUser: true, goneByUser: true)
     static var previews: some View {
         PostView(post: post, showHeaderAndFooter: true)
             .previewLayout(.sizeThatFits)

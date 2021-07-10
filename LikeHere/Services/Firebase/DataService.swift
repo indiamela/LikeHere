@@ -40,20 +40,19 @@ class DataService {
                     let tag = document.get(DatabasePostField.tag) as? Int ?? 0
                     let address = document.get(DatabasePostField.address) as? String
                     
-//                    let likeCount = document.get(DatabasePostField.likeCount) as? String ?? "0"
-//                    let goneCount = document.get(DatabasePostField.goneCount) as? String ?? "0"
-//
-//                    var likeByUser: Bool = false
-//                    var goneByUser: Bool = false
-//                    if let likeUserIDArray = document.get(DatabasePostField.likeByUser) as? [String], let userID = currentUserID {
-//                        likeByUser = likeUserIDArray.contains(userID)
-//                    }
-//                    if let goneUserIDArray = document.get(DatabasePostField.goneByUser) as? [String], let userID = currentUserID {
-//                        goneByUser = goneUserIDArray.contains(userID)
-//                    }
+                    let likeCount = document.get(DatabasePostField.likeCount) as? Int ?? 0
+                    let goneCount = document.get(DatabasePostField.goneCount) as? Int ?? 0
+
+                    var likeByUser: Bool = false
+                    var goneByUser: Bool = false
+                    if let likeUserIDArray = document.get(DatabasePostField.likeByUser) as? [String], let userID = currentUserID {
+                        likeByUser = likeUserIDArray.contains(userID)
+                    }
+                    if let goneUserIDArray = document.get(DatabasePostField.goneByUser) as? [String], let userID = currentUserID {
+                        goneByUser = goneUserIDArray.contains(userID)
+                    }
                     
-//                    let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName,caption: caption, dateCreated: date, likeCount: likeCount, goneCount:goneCount, likeByUser: likeByUser, goneByUser: goneByUser)
-                    let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName,caption: caption, address: address, dateCreated: date)
+                    let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName, caption: caption, address: address, dateCreated: date, likeCount: likeCount, goneCount: goneCount, likeByUser: likeByUser, goneByUser: goneByUser)
                     postArray.append(newPost)
                 }
             }
@@ -101,4 +100,41 @@ class DataService {
             }
         }
     }
+    
+    func likePost(postID: String, currentUserID: String) {
+        let increment: Int64 = 1
+        let data: [String:Any] = [
+            DatabasePostField.likeCount : FieldValue.increment(increment),
+            DatabasePostField.likeByUser : FieldValue.arrayUnion([currentUserID])
+        ]
+        REF_POSTS.document(postID).updateData(data)
+    }
+    
+    func unlikePost(postID: String, currentUserID: String) {
+        let increment: Int64 = -1
+        let data: [String:Any] = [
+            DatabasePostField.likeCount : FieldValue.increment(increment),
+            DatabasePostField.likeByUser : FieldValue.arrayRemove([currentUserID])
+        ]
+        REF_POSTS.document(postID).updateData(data)
+    }
+    
+    func gonePost(postID: String, currentUserID: String) {
+        let increment: Int64 = 1
+        let data: [String:Any] = [
+            DatabasePostField.goneCount : FieldValue.increment(increment),
+            DatabasePostField.goneByUser : FieldValue.arrayUnion([currentUserID])
+        ]
+        REF_POSTS.document(postID).updateData(data)
+    }
+    
+    func notGonePost(postID: String, currentUserID: String) {
+        let increment: Int64 = -1
+        let data: [String:Any] = [
+            DatabasePostField.goneCount : FieldValue.increment(increment),
+            DatabasePostField.goneByUser : FieldValue.arrayRemove([currentUserID])
+        ]
+        REF_POSTS.document(postID).updateData(data)
+    }
+
 }
