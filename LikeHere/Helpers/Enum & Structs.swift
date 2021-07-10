@@ -39,3 +39,37 @@ struct CurrentUserDefaults {
     static let displayName = "display_name"
     static let displayAddress = "display_address"
 }
+
+enum tagName {
+    case browseAll
+    case relux
+    case love
+    case interesting
+    case freedom
+    case peaceful
+    case joyful
+}
+
+extension tagName {
+    
+    var label: String {
+        switch self {
+        case .browseAll:
+            return ""
+        case .relux:
+            return "Relux"
+        case .love:
+            return "Love"
+        case .interesting:
+            return "Interesting"
+        case .freedom:
+            return "Freedom"
+        case .peaceful:
+            return "Peaceful"
+        case .joyful:
+            return "Joyful"
+        }
+    }
+}
+
+

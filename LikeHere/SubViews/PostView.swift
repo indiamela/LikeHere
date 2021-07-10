@@ -10,7 +10,7 @@ import SwiftUI
 struct PostView: View {
     
     @State var post: PostModel
-    @State var postImage: UIImage = UIImage(named:"logo.loading")!
+    @State var postImage: UIImage = UIImage(named:"place1")!
     @State var profileImage: UIImage = UIImage(named: "logo.loading")!
     var showHeaderAndFooter:Bool
     
@@ -25,18 +25,16 @@ struct PostView: View {
                         .frame(width: 30, height: 30)
                         .clipShape(Circle())
                     VStack(alignment: .leading){
-                        //nkchaudhary01
                         Text(post.username)
-                            .font(.custom("Avenir Next Bold", size: 14))
+                            .font(.custom("Roboto Bold", size: 20))
                             .foregroundColor(.black)
-                        //心が落ち着く場所
-                        Text("心が落ち着く場所")
-                            .font(.custom("Avenir Next Regular", size: 10))
+                        Text(post.tagName())
+                            .font(.custom("Roboto Regular", size: 14))
                             .foregroundColor(.black)
                     }
                 }
                 .padding(.horizontal,20)
-                .padding(.top,10)
+                .padding(.top,20)
             }
             
             // MARK: - IMAGE
@@ -49,11 +47,25 @@ struct PostView: View {
             
             if showHeaderAndFooter {
                 // MARK: - FOOTER
+                if let address = post.address {
+                    HStack{
+                        Image(systemName: "mappin.and.ellipse")
+                            .font(.title3)
+                            .accentColor(.black)
+                        //Plaece Addless
+                        Text(address)
+                            .font(.custom("Roboto Regular", size: 14))
+                            .foregroundColor(Color.MyTheme.grayColor)
+                    }
+                    .padding(.horizontal,20)
+                    .padding(.top,5)
+                }
+                
                 HStack(alignment: .bottom, spacing: 20){
                     Button(action: {
                         //want to go
                     }, label: {
-                        Image(systemName: "hand.thumbsup.fill")
+                        Image(systemName: "hand.thumbsup")
                             .font(.title2)
                     })
                     .accentColor(.red)
@@ -61,7 +73,7 @@ struct PostView: View {
                     Button(action: {
                         //went
                     }, label: {
-                        Image(systemName: "flag.fill")
+                        Image(systemName: "flag")
                             .font(.title2)
                     })
                     .accentColor(.green)
@@ -85,32 +97,18 @@ struct PostView: View {
                     .accentColor(.black)
                 }
                 .padding(.horizontal,20)
+                .padding(.top,5)
                 
-                if let address = post.address {
-                    HStack{
-                        Image(systemName: "mappin.and.ellipse")
-                            .font(.title3)
-                            .accentColor(.black)
-                        //Plaece Addless
-                        Text(address)
-                            .font(.custom("Roboto Regular", size: 14))
-                            .foregroundColor(Color(#colorLiteral(red: 0.78, green: 0.8, blue: 0.83, alpha: 1)))
-                    }
-                    .padding(.horizontal,20)
-                    .padding(.top,5)
-                }
-                
-                //小さなお子様連れの旅行では、持ち物がたくさんあるので...
                 if let caption = post.caption{
                     HStack{
                         Text(caption)
-                            .font(.custom("Avenir Next Regular", size: 10))
+                            .font(.custom("Roboto Regular", size: 14))
                             .foregroundColor(Color(#colorLiteral(red: 0.11, green: 0.11, blue: 0.16, alpha: 1)))
-                            .padding(.horizontal,20)
                             .padding(.top,5)
                         Spacer(minLength: 0)
                     }
-                    .padding(.bottom,5)
+                    .padding(.horizontal,20)
+                    .padding(.top,5)
                 }
             }
         }

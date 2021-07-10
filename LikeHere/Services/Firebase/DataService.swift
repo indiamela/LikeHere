@@ -38,6 +38,7 @@ class DataService {
                     let caption = document.get(DatabasePostField.caption) as? String
                     let date = timeStamp.dateValue()
                     let tag = document.get(DatabasePostField.tag) as? Int ?? 0
+                    let address = document.get(DatabasePostField.address) as? String
                     
 //                    let likeCount = document.get(DatabasePostField.likeCount) as? String ?? "0"
 //                    let goneCount = document.get(DatabasePostField.goneCount) as? String ?? "0"
@@ -52,7 +53,7 @@ class DataService {
 //                    }
                     
 //                    let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName,caption: caption, dateCreated: date, likeCount: likeCount, goneCount:goneCount, likeByUser: likeByUser, goneByUser: goneByUser)
-                    let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName,caption: caption, dateCreated: date)
+                    let newPost = PostModel(tag: tag, postID: postID, userID: userID, username: displayName,caption: caption, address: address, dateCreated: date)
                     postArray.append(newPost)
                 }
             }
