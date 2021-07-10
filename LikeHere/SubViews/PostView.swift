@@ -41,12 +41,12 @@ struct PostView: View {
             }
             
             // MARK: - IMAGE
-            Image(uiImage:postImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth:.infinity, maxHeight: 300)
-                .clipShape(Rectangle())
-                .edgesIgnoringSafeArea(.all)
+                Image(uiImage:postImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth:.infinity, maxHeight: showHeaderAndFooter ? 300 : nil)
+                    .clipShape(Rectangle())
+                    .edgesIgnoringSafeArea(.all)
             
             if showHeaderAndFooter {
                 // MARK: - FOOTER

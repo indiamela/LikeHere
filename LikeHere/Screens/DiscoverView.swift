@@ -57,8 +57,6 @@ struct DiscoverView: View {
             ScrollView(showsIndicators: true) {
                 WaterfallGrid(posts.dataArray, id: \.self) { index in
                     PostView(post: index, showHeaderAndFooter: false)
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
                 }
                 .gridStyle(
                     columns: 2,

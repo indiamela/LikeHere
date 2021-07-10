@@ -25,13 +25,5 @@ struct PostModel:Hashable,Identifiable{
     func hash(into hasher: inout Hasher){
         hasher.combine(id)
     }
-    
-    // podtID
-    // userID
-    // user username
-    // caption - optional
-    // date
-    // like count
-    // like by current user
 }
 

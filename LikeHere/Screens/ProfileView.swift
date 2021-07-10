@@ -24,10 +24,8 @@ struct ProfileView: View {
             ProfileHeaderView(displayName: userDisplayName, displayPicture: $userProfilePicture, displayAddress: userDisplayAddress)
             Divider()
             ScrollView(showsIndicators: true) {
-                WaterfallGrid((1..<8), id: \.self) { index in
-                    Image("place\(index)")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                WaterfallGrid(posts.dataArray, id: \.self) { index in
+                    PostView(post: index, showHeaderAndFooter: false)
                 }
                 .gridStyle(
                     columns: 2,
