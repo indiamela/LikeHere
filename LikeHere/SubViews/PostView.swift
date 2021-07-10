@@ -19,7 +19,6 @@ struct PostView: View {
             // MARK: - HEADER
             if showHeaderAndFooter {
                 HStack{
-                    //Ellipse 12
                     Image(uiImage: profileImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)

@@ -32,95 +32,85 @@ struct PostImageView: View {
                 Spacer()
             }
             
-            ScrollView(.vertical, showsIndicators: false, content: {
-                Image(uiImage: imageSelected)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth:.infinity, maxHeight: 300)
-                    .clipped()
-                
-                HStack{
-                    Image(systemName: "mappin.and.ellipse")
-                        .font(.title3)
-                        .accentColor(.black)
-                    //Plaece Addless
-                    TextField("address", text: $addressText)
-                        .font(.custom("Roboto Regular", size: 14))
-                        .foregroundColor(Color(#colorLiteral(red: 0.78, green: 0.8, blue: 0.83, alpha: 1)))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .padding(.horizontal,20)
-                .padding(.top,5)
-                    
-                Text("feeling tag")
-                    .font(.headline)
+            Image(uiImage: imageSelected)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth:.infinity, maxHeight: 200)
+                .clipped()
+            
+            HStack{
+                Image(systemName: "mappin.and.ellipse")
+                    .font(.title3)
+                    .accentColor(.black)
+                TextField("場所を追加", text: $addressText)
+                    .foregroundColor(Color.black)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .textCase(.uppercase)
-                    .padding(.leading,20)
-                    .padding(.top,20)
-                
-                ScrollView(.horizontal, showsIndicators: false, content: {
-                    HStack(spacing:5){
-                        ForEach((0..<7), id: \.self) { index in
-                            VStack{
-                                
-                                ZStack{
-                                    Image("category\(index)")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 70, height: 70)
-                                        .clipShape(Circle())
-                                        .onTapGesture {
-                                            selection = index
-                                        }
-                                    Circle()
-                                        .foregroundColor(.yellow)
-                                        .opacity(selection == index ? 0.7 : 0)
-                                }
-                                
-                                Text(categoryName(index))
-                                    .font(.caption2)
+            }
+            .padding(.horizontal,20)
+            .padding(.vertical,10)
+            
+            Divider()
+            Text("feeling")
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .textCase(.uppercase)
+                .padding(.horizontal,20)
+                .padding(.top,20)
+            
+            ScrollView(.horizontal, showsIndicators: false, content: {
+                HStack(spacing:5){
+                    ForEach((0..<7), id: \.self) { index in
+                        VStack{
+                            ZStack{
+                                Image("category\(index)")
+                                    .resizable()
+                                    .frame(width: 70, height: 70)
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Circle())
+                                    .onTapGesture {
+                                        selection = index
+                                    }
+                                Circle()
+                                    .frame(width: 70, height: 70)
+                                    .foregroundColor(Color.MyTheme.orangeColor)
+                                    .opacity(selection == index ? 0.7 : 0)
                             }
+                            .frame(width: 70, height: 70)
+                            Text(categoryName(index))
+                                .font(.caption2)
+                                .fontWeight(.bold)
                         }
                     }
-                })
-                .offset(y:-10)
-                .padding(.horizontal)
-                
-                VStack{
-                    Text("caption")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .textCase(.uppercase)
-                        .padding(.leading,20)
-                        .padding(.top,20)
-                    
-                    TextField("Add your caption here...", text: $captionText)
-                        .padding()
-                        .background(Color(#colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)))
-                        .frame(height: 60)
-                        .frame(maxWidth: .infinity)
-                        .font(.headline)
-                        .cornerRadius(12)
-                        .padding(.horizontal)
-                        .autocapitalization(.sentences)
                 }
-
-                                
-                Button(action: {
-                    postPicture()
-                }, label: {
-                    Text("Post Picture!".uppercased())
-                        .font(.title3)
-                        .foregroundColor(Color(#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)))
-                        .fontWeight(.bold)
-                        .padding()
-                        .frame(height: 60)
-                        .frame(maxWidth: .infinity)
-                        .font(.headline)
-                        .cornerRadius(12)
-                        .padding(.horizontal)
-                })
+            })
+            .padding()
+            
+            TextField("キャプションを追加", text: $captionText)
+                .padding()
+                .frame(height: 60)
+                .frame(maxWidth: .infinity)
+                .font(.headline)
+                .background(Color.MyTheme.grayColor)
+                .cornerRadius(12)
+                .padding(.horizontal)
+                .padding(.top,20)
+                .autocapitalization(.sentences)
+            
+            Spacer()
+            
+            Button(action: {
+                postPicture()
+            }, label: {
+                Text("share!".uppercased())
+                    .font(.title3)
+                    .foregroundColor(.black)
+                    .fontWeight(.bold)
+                    .frame(height: 60)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.MyTheme.orangeColor)
+                    .font(.headline)
+                    .cornerRadius(12)
+                    .padding()
             })
         })
         .alert(isPresented: $showAlart) { () -> Alert in
@@ -143,7 +133,7 @@ struct PostImageView: View {
     
     func getAlert() -> Alert {
         if successPostImage {
-            return Alert(title: Text("投稿しました"),dismissButton: .default(Text("OK"), action: {
+            return Alert(title: Text("投稿しました!"),dismissButton: .default(Text("OK"), action: {
                 presentationMode.wrappedValue.dismiss()
             }))
         } else {
@@ -152,15 +142,15 @@ struct PostImageView: View {
             }))
         }
     }
-
+    
     func categoryName(_ index:Int) -> String{
         switch index {
         case 0:
-          return "No tag"
+            return "No tag"
         case 1:
-          return "Reluxing"
+            return "Relux"
         case 2:
-            return "Loving"
+            return "Love"
         case 3:
             return "Intersting"
         case 4:

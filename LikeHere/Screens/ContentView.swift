@@ -45,7 +45,7 @@ struct ContentView: View {
                 Text("Profile")
             }
         }
-        .accentColor(.black)
+        .accentColor(Color.MyTheme.orangeColor)
 //        .sheet(isPresented: $loggedIn, content: {
 //            SignUpView()
 //        })

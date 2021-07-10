@@ -32,7 +32,7 @@ struct HomeView: View {
                 }, label: {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 50))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.MyTheme.orangeColor)
                 })
                 .padding(.bottom, 30)
                 .padding(.trailing,40)
@@ -58,8 +58,7 @@ struct HomeView: View {
             })
 
         }
-        .navigationBarTitle("title")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
     }
     
     // MARK: - FUNCTIONS
