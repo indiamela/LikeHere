@@ -9,7 +9,10 @@ import SwiftUI
 import WaterfallGrid
 
 struct DiscoverView: View {
+    @ObservedObject var posts: PostArrayObject
+    @State var postImage: UIImage = UIImage(named:"logo.loading")!
     @State var selection: Int = 0
+    
     var body: some View {
         
         VStack(alignment: .leading){
@@ -52,10 +55,10 @@ struct DiscoverView: View {
                 .padding(.top,10)
 
             ScrollView(showsIndicators: true) {
-                WaterfallGrid((1..<8), id: \.self) { index in
-                    Image("place\(index)")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                WaterfallGrid(posts.dataArray, id: \.self) { index in
+                    PostView(post: index, showHeaderAndFooter: false)
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fit)
                 }
                 .gridStyle(
                     columns: 2,
@@ -66,7 +69,7 @@ struct DiscoverView: View {
         .navigationBarTitle("discover")
         .navigationBarTitleDisplayMode(.large)
     }
-    
+        
     func categoryName(_ index:Int) -> String{
         switch index {
         case 0:
@@ -92,7 +95,7 @@ struct DiscoverView: View {
 struct DiscoverView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            DiscoverView()
+            DiscoverView(posts: PostArrayObject(shuffled: false))
         }
     }
 }

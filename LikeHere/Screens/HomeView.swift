@@ -20,7 +20,7 @@ struct HomeView: View {
             ScrollView(.vertical,showsIndicators: false){
                 LazyVStack{
                     ForEach(posts.dataArray, id: \.self) { post in
-                        PostView(post: post)
+                        PostView(post: post, showHeaderAndFooter: true)
                     }
                 }
             }

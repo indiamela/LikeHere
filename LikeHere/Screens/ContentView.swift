@@ -24,7 +24,7 @@ struct ContentView: View {
                 Text("Home")
             }
             NavigationView{
-                DiscoverView()
+                DiscoverView(posts: PostArrayObject(shuffled: false))
             }
             .tabItem {
                 Image(systemName: "magnifyingglass")
