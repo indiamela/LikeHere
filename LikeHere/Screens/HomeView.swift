@@ -18,12 +18,16 @@ struct HomeView: View {
     var body: some View {
         ZStack(alignment:.trailing){
             ScrollView(.vertical,showsIndicators: false){
+                RefreshControl(coordinateSpaceName: "RefreshControl", onRefresh: {
+                    posts.fetchPostsForFeed(shuffled: true)
+                })
                 LazyVStack{
                     ForEach(posts.dataArray, id: \.self) { post in
                         PostView(post: post, showHeaderAndFooter: true)
                     }
                 }
             }
+            .coordinateSpace(name: "RefreshControl")
             
             VStack{
                 Spacer()

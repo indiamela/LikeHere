@@ -24,6 +24,9 @@ struct ProfileView: View {
             ProfileHeaderView(displayName: userDisplayName, displayPicture: $userProfilePicture, displayAddress: userDisplayAddress)
             Divider()
             ScrollView(showsIndicators: true) {
+                RefreshControl(coordinateSpaceName: "RefreshControl", onRefresh: {
+                    posts.fetchPostsForUser(userID: profileUserID)
+                })
                 WaterfallGrid(posts.dataArray, id: \.self) { index in
                     PostView(post: index, showHeaderAndFooter: false)
                 }
@@ -32,6 +35,7 @@ struct ProfileView: View {
                     animation: .easeInOut(duration: 0.5)
                 )
             }
+            .coordinateSpace(name: "RefreshControl")
         }
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)

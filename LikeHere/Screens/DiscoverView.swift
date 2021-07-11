@@ -34,11 +34,7 @@ struct DiscoverView: View {
                                 .clipShape(Circle())
                                 .onTapGesture {
                                     selection = index
-                                    if index != 0 {
-                                        posts.filterWithTag(tagID: index)
-                                    } else {
-                                        
-                                    }
+                                    posts.filterWithTag(tagID: index)
                                 }
                             
                             Text(categoryName(index))
@@ -61,6 +57,9 @@ struct DiscoverView: View {
                 .padding(.top,10)
 
             ScrollView(showsIndicators: true) {
+                RefreshControl(coordinateSpaceName: "RefreshControl", onRefresh: {
+                    posts.filterWithTag(tagID: $selection.wrappedValue)
+                })
                 WaterfallGrid(posts.dataArray, id: \.self) { index in
                     PostView(post: index, showHeaderAndFooter: false)
                 }
@@ -69,6 +68,7 @@ struct DiscoverView: View {
                     animation: .easeInOut(duration: 0.5)
                 )
             }
+            .coordinateSpace(name: "RefreshControl")
         }
         .navigationBarTitle("Discover")
         .navigationBarTitleDisplayMode(.large)
