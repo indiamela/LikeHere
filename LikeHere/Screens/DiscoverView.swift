@@ -18,7 +18,7 @@ struct DiscoverView: View {
         VStack(alignment: .leading){
             //search feeling
             Text("search feeling")
-                .foregroundColor(Color.MyTheme.blueColor)
+                .foregroundColor(Color.MyTheme.orangeColor)
                 .font(.headline)
                 .textCase(.uppercase)
                 .padding(.leading,20)
@@ -51,7 +51,7 @@ struct DiscoverView: View {
             
             Text(categoryName($selection.wrappedValue))
                 .font(.headline)
-                .foregroundColor(Color.MyTheme.blueColor)
+                .foregroundColor(Color.MyTheme.orangeColor)
                 .padding(.leading,20)
                 .padding(.top,10)
 

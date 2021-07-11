@@ -28,6 +28,33 @@ class DataService {
         }
     }
     
+    func downloadComment(postID: String, handler: @escaping(_ comments: [CommentModel]) -> ()){
+        REF_POSTS.whereField(DatabasePostField.postID, isEqualTo: postID).getDocuments { (querySnapshot, error) in
+            handler(self.getCommentsFromSnapshot(querrySnapshot: querySnapshot))
+        }
+    }
+    
+    private func getCommentsFromSnapshot(querrySnapshot: QuerySnapshot?) -> [CommentModel] {
+        var commentArray = [CommentModel]()
+        if let snapshot = querrySnapshot,snapshot.documents.count > 0 {
+            for document in snapshot.documents {
+                if let userID = document.get(DatabaseCommentField.userID) as? String,
+                   let displayName = document.get(DatabaseCommentField.displayName) as? String,
+                   let comment = document.get(DatabaseCommentField.comment) as? String,
+                   let timeStamp = document.get(DatabaseCommentField.dataCreated) as? Timestamp{
+                    let date = timeStamp.dateValue()
+                    let commentID = document.documentID
+                    let newComment = CommentModel(commentID: commentID, userID: userID, username: displayName, content: comment, dataCreated: date)
+                    commentArray.append(newComment)
+                }
+            }
+            return commentArray
+        } else {
+            print("No comments is document for this post")
+            return commentArray
+        }
+    }
+    
     private func getPostsFromSnapshot(querySnapshot: QuerySnapshot?) -> [PostModel]{
         var postArray = [PostModel]()
         if let snapshot = querySnapshot,snapshot.documents.count > 0{
@@ -96,6 +123,30 @@ class DataService {
             } else {
                 print("Error uploading image")
                 handler(false)
+                return
+            }
+        }
+    }
+    
+    func uploadComment(userID: String, postID: String, userName: String,comment: String, handler: @escaping(_ success: Bool, _ commentID: String?) -> ()) {
+        let document = REF_POSTS.document(postID).collection(DatabasePostField.comments).document()
+        let commentID = document.documentID
+        
+        let postData:[String:Any] = [
+            DatabaseCommentField.commentID : commentID,
+            DatabaseCommentField.comment : comment,
+            DatabaseCommentField.userID : userID,
+            DatabaseCommentField.displayName : userName,
+            DatabaseCommentField.dataCreated : FieldValue.serverTimestamp()
+        ]
+        document.setData(postData){(error) in
+            if let error = error {
+                print("Error post Data\(error)")
+                handler(false, nil)
+                return
+            } else {
+                print("Success post Data")
+                handler(true, commentID)
                 return
             }
         }

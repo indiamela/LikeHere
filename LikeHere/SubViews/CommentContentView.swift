@@ -9,11 +9,12 @@ import SwiftUI
 
 struct CommentContentView: View {
     @State var comment:CommentModel
+    @State var profileImage: UIImage = UIImage(named: "logo.loading")!
     var body: some View {
         HStack {
             
             //MARK: PROFILE IMAGE
-            Image("dog1")
+            Image(uiImage: profileImage)
                 .resizable()
                 .scaledToFill()
                 .frame(width: 40, height: 40, alignment: .center)
@@ -22,12 +23,12 @@ struct CommentContentView: View {
                 //MARK: USER NAME
                 Text(comment.username)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.black)
                 //MARK: CONTENT
                 Text(comment.content)
                     .padding(.all,10)
                     .foregroundColor(.primary)
-                    .background(Color.gray)
+                    .background(Color.MyTheme.grayColor)
                     .cornerRadius(10)
             })
             
@@ -39,7 +40,11 @@ struct CommentContentView: View {
     }
     
     func getProfileImage() {
-
+        ImageManager.instance.downloadingProfileImage(userID: comment.userID) { (returnedImage) in
+            if let image = returnedImage {
+                profileImage = image
+            }
+        }
     }
 }
 

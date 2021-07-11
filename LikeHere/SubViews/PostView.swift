@@ -20,11 +20,15 @@ struct PostView: View {
             // MARK: - HEADER
             if showHeaderAndFooter {
                 HStack{
-                    Image(uiImage: profileImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 30, height: 30)
-                        .clipShape(Circle())
+                    NavigationLink(
+                        destination: ProfileView(isMyProfile: false, profileUserID: post.userID, userDisplayName: post.username, posts: PostArrayObject(userID: post.userID)),
+                        label: {
+                            Image(uiImage: profileImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 30, height: 30)
+                                .clipShape(Circle())
+                        })
                     VStack(alignment: .leading){
                         Text(post.username)
                             .font(.custom("Roboto Bold", size: 20))
@@ -131,7 +135,7 @@ struct PostView: View {
             print("Cannot find userID while liking post")
             return
         }
-        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount + 1, goneCount: post.goneCount, likeByUser: true, goneByUser: post.goneByUser)
+        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, caption: post.caption, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount + 1, goneCount: post.goneCount, likeByUser: true, goneByUser: post.goneByUser)
         
         self.post = updatePost
         DataService.instance.likePost(postID: post.postID, currentUserID: userID)
@@ -142,7 +146,7 @@ struct PostView: View {
             print("Cannot find userID while liking post")
             return
         }
-        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount - 1, goneCount: post.goneCount, likeByUser: false, goneByUser: post.goneByUser)
+        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, caption: post.caption, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount - 1, goneCount: post.goneCount, likeByUser: false, goneByUser: post.goneByUser)
         
         self.post = updatePost
         DataService.instance.unlikePost(postID: post.postID, currentUserID: userID)
@@ -153,7 +157,7 @@ struct PostView: View {
             print("Cannot find userID while liking post")
             return
         }
-        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount, goneCount: post.goneCount + 1, likeByUser: post.likeByUser, goneByUser: true)
+        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, caption: post.caption, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount, goneCount: post.goneCount + 1, likeByUser: post.likeByUser, goneByUser: true)
         
         self.post = updatePost
         DataService.instance.gonePost(postID: post.postID, currentUserID: userID)
@@ -164,7 +168,7 @@ struct PostView: View {
             print("Cannot find userID while liking post")
             return
         }
-        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount, goneCount: post.goneCount - 1, likeByUser: post.likeByUser, goneByUser: false)
+        let updatePost = PostModel(tag: post.tag, postID: post.postID, userID: post.userID, username: post.username, caption: post.caption, address: post.address, dateCreated: post.dateCreated, likeCount: post.likeCount, goneCount: post.goneCount - 1, likeByUser: post.likeByUser, goneByUser: false)
         
         self.post = updatePost
         DataService.instance.notGonePost(postID: post.postID, currentUserID: userID)

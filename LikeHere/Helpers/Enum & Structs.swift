@@ -32,6 +32,16 @@ struct DatabasePostField { //Fields within the User Document in Database
     static let goneCount = "gone_count"
     static let likeByUser = "liked_by"
     static let goneByUser = "gone_by"
+    static let comments = "comments"
+}
+
+struct DatabaseCommentField {
+    
+    static let userID = "user_id"
+    static let commentID = "comment_id"
+    static let comment = "comment"
+    static let displayName = "display_name"
+    static let dataCreated = "data_created"
 }
 
 struct CurrentUserDefaults {

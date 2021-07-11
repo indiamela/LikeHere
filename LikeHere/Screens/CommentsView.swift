@@ -10,6 +10,9 @@ import SwiftUI
 struct CommentsView: View {
     @State var submissionText = ""
     @State var commentsArray = [CommentModel]()
+    @State var profilePicture = UIImage(named: "logo.loading")
+    @AppStorage(CurrentUserDefaults.userID) var currentUserID: String?
+    @AppStorage(CurrentUserDefaults.displayName) var currentDisplayName: String?
     
     var post:PostModel
     
@@ -22,9 +25,9 @@ struct CommentsView: View {
                 }
             }
             Spacer()
-            // SendButton
+            Divider()
             HStack{
-                Image("dog1")
+                Image(uiImage: profilePicture!)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 40, height: 40, alignment: .center)
@@ -32,7 +35,7 @@ struct CommentsView: View {
                 TextField("Add a comment here...", text: $submissionText)
                 
                 Button(action: {
-                    // send comment
+                    addComment()
                 }, label: {
                     Image(systemName: "paperplane.fill")
                         .font(.title2)
@@ -40,23 +43,45 @@ struct CommentsView: View {
             }
         }
         .padding()
-        .navigationBarTitle(Text("Chats"))
         .onAppear(perform: {
+            getProfilePicture()
             getComments()
         })
     }
     
-    func getComments() {
-        let array1 = CommentModel(commentID: "", userID: "", username: "userName", content: "かわいい！", dataCreated: Date())
-        let array2 = CommentModel(commentID: "", userID: "", username: "userName", content: "おもしろい！", dataCreated: Date())
-        let array3 = CommentModel(commentID: "", userID: "", username: "userName", content: "hahahaha！", dataCreated: Date())
-
-        self.commentsArray.append(array1)
-        self.commentsArray.append(array2)
-        self.commentsArray.append(array3)
-
+    func getProfilePicture() {
+        guard let userID = currentUserID else { return }
+        ImageManager.instance.downloadingProfileImage(userID: userID) { (returnedImage) in
+            if let image = returnedImage {
+                self.profilePicture = image
+            }
+        }
     }
-
+    
+    func addComment() {
+        guard let userID = currentUserID, let displayName = currentDisplayName else { return }
+        guard submissionText.count > 0 else { return }
+        DataService.instance.uploadComment(userID: userID, postID: post.postID, userName: displayName, comment: submissionText) { (success,returnedCommentID) in
+            if success, let commentID = returnedCommentID {
+                let newComment = CommentModel(commentID: commentID, userID: userID, username: displayName, content: submissionText, dataCreated: Date())
+                self.commentsArray.append(newComment)
+                self.submissionText = ""
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+        }
+    }
+    
+    func getComments() {
+        guard self.commentsArray.isEmpty else { return }
+        print("get comments")
+        if let caption = post.caption, caption.count > 1 {
+            let captionComment = CommentModel(commentID: "", userID: post.userID, username: post.username, content: caption, dataCreated: post.dateCreated)
+            self.commentsArray.append(captionComment)
+        }
+        DataService.instance.downloadComment(postID: post.postID) { (returnedComments) in
+            self.commentsArray.append(contentsOf: returnedComments)
+        }
+    }
 }
 
 struct CommentsView_Previews: PreviewProvider {
