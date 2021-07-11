@@ -34,6 +34,11 @@ struct DiscoverView: View {
                                 .clipShape(Circle())
                                 .onTapGesture {
                                     selection = index
+                                    if index != 0 {
+                                        posts.filterWithTag(tagID: index)
+                                    } else {
+                                        
+                                    }
                                 }
                             
                             Text(categoryName(index))
@@ -65,7 +70,7 @@ struct DiscoverView: View {
                 )
             }
         }
-        .navigationBarTitle("discover")
+        .navigationBarTitle("Discover")
         .navigationBarTitleDisplayMode(.large)
     }
         
@@ -74,9 +79,9 @@ struct DiscoverView: View {
         case 0:
           return "BROWSE ALL"
         case 1:
-          return "Reluxing"
+          return "Relux"
         case 2:
-            return "Loving"
+            return "Love"
         case 3:
             return "Intersting"
         case 4:
@@ -84,7 +89,7 @@ struct DiscoverView: View {
         case 5:
             return "Peaceful"
         case 6:
-            return "Jouful"
+            return "Joyful"
         default:
             return "BROWSE ALL"
         }

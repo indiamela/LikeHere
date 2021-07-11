@@ -28,7 +28,7 @@ struct ContentView: View {
             }
             .tabItem {
                 Image(systemName: "magnifyingglass")
-                Text("Browse")
+                Text("Discover")
             }
             
             ZStack{
@@ -46,9 +46,6 @@ struct ContentView: View {
             }
         }
         .accentColor(Color.MyTheme.orangeColor)
-//        .sheet(isPresented: $loggedIn, content: {
-//            SignUpView()
-//        })
     }
     
 }

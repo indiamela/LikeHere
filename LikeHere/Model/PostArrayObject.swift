@@ -31,4 +31,29 @@ class PostArrayObject:ObservableObject{
             }
         }
     }
+    
+    func filterWithTag(tagID: Int) {
+        print("GET POSTS FOR TAGID")
+        DataService.instance.downloadPostForTagID(tagID: tagID) { (returnedPosts) in
+            if returnedPosts.count > 0{
+                self.dataArray = []
+                let sortedPosts = returnedPosts.sorted{(post1,post2)->Bool in
+                    return post1.dateCreated > post2.dateCreated
+                }
+                self.dataArray.append(contentsOf: sortedPosts)
+            } else {
+                self.dataArray = []
+            }
+        }
+    }
+    
+    init(tagID: Int) {
+        print("GET POSTS FOR TAGID")
+        DataService.instance.downloadPostForTagID(tagID: tagID) { (returnedPosts) in
+            let sortedPosts = returnedPosts.sorted{(post1,post2)->Bool in
+                return post1.dateCreated > post2.dateCreated
+            }
+            self.dataArray.append(contentsOf: sortedPosts)
+        }
+    }
 }

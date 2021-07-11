@@ -17,14 +17,20 @@ class DataService {
     @AppStorage(CurrentUserDefaults.userID) var currentUserID: String?
     
     func downloadPostForFeed(handler:@escaping(_ posts:[PostModel])->()) {
-        REF_POSTS.order(by: DatabasePostField.dataCreated,descending: true).limit(to: 50).getDocuments { (QuerrySnapshot, error) in
+        REF_POSTS.order(by: DatabasePostField.dataCreated,descending: true).limit(to: 10).getDocuments { (QuerrySnapshot, error) in
             handler(self.getPostsFromSnapshot(querySnapshot: QuerrySnapshot))
         }
     }
     
     func downloadPostForUser(userID: String, handler: @escaping(_ posts:[PostModel]) -> ()){
-        REF_POSTS.whereField(DatabasePostField.userID, isEqualTo: userID).getDocuments { (querySnapshot, error) in
-            handler(self.getPostsFromSnapshot(querySnapshot: querySnapshot))
+        REF_POSTS.whereField(DatabasePostField.userID, isEqualTo: userID).getDocuments { (QuerrySnapshot, error) in
+            handler(self.getPostsFromSnapshot(querySnapshot: QuerrySnapshot))
+        }
+    }
+    
+    func downloadPostForTagID(tagID: Int, handler: @escaping(_ posts:[PostModel]) -> ()){
+        REF_POSTS.whereField(DatabasePostField.tag, isEqualTo: tagID).limit(to: 10).getDocuments { (QuerySnapshot, error) in
+            handler(self.getPostsFromSnapshot(querySnapshot: QuerySnapshot))
         }
     }
     
