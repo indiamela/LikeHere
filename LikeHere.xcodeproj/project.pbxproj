@@ -19,6 +19,7 @@
 		F260345A267AB6AB008C3E51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */; };
 		F2A9F22B268A875700D528F7 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9F22A268A875700D528F7 /* DataService.swift */; };
 		F2B988A5269BAF0500D32612 /* RefleshControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B988A4269BAF0400D32612 /* RefleshControll.swift */; };
+		F2B988A7269D049500D32612 /* DetailPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B988A6269D049500D32612 /* DetailPictureView.swift */; };
 		F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23EE267028E600FDF33A /* PostModel.swift */; };
 		F2BF23F126702D8F00FDF33A /* PostArrayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */; };
 		F2BF23F3267179FB00FDF33A /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF23F2267179FB00FDF33A /* CommentsView.swift */; };
@@ -81,6 +82,7 @@
 		F2603459267AB6AB008C3E51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2A9F22A268A875700D528F7 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		F2B988A4269BAF0400D32612 /* RefleshControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefleshControll.swift; sourceTree = "<group>"; };
+		F2B988A6269D049500D32612 /* DetailPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPictureView.swift; sourceTree = "<group>"; };
 		F2BF23EE267028E600FDF33A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		F2BF23F026702D8F00FDF33A /* PostArrayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArrayObject.swift; sourceTree = "<group>"; };
 		F2BF23F2267179FB00FDF33A /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 		F2E4005B266CCA9F00A206CC /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				F2B988A6269D049500D32612 /* DetailPictureView.swift */,
 				F2BF23F426717AAA00FDF33A /* CommentContentView.swift */,
 				F2F45CE42674A99400604465 /* ImagePicker.swift */,
 				F2E40062266ED93A00A206CC /* PostView.swift */,
@@ -599,6 +602,7 @@
 				F2BF23F526717AAA00FDF33A /* CommentContentView.swift in Sources */,
 				F2BF23F92672CC9300FDF33A /* DiscoverView.swift in Sources */,
 				F2BF23F3267179FB00FDF33A /* CommentsView.swift in Sources */,
+				F2B988A7269D049500D32612 /* DetailPictureView.swift in Sources */,
 				F2E4005F266ED64400A206CC /* HomeView.swift in Sources */,
 				F24D06892682A06F0069DC58 /* Enum & Structs.swift in Sources */,
 				F24D0682267FFE260069DC58 /* AuthService.swift in Sources */,

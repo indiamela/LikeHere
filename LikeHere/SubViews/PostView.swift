@@ -43,12 +43,16 @@ struct PostView: View {
             }
             
             // MARK: - IMAGE
-                Image(uiImage:postImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth:.infinity, maxHeight: showHeaderAndFooter ? 300 : nil)
-                    .clipShape(Rectangle())
-                    .edgesIgnoringSafeArea(.all)
+            NavigationLink(
+                destination: DetailPictureView(profileImage: postImage),
+                label: {
+                    Image(uiImage:postImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth:.infinity, maxHeight: showHeaderAndFooter ? 300 : nil)
+                        .clipShape(Rectangle())
+                        .edgesIgnoringSafeArea(.all)
+                })
             
             if showHeaderAndFooter {
                 // MARK: - FOOTER
