@@ -14,6 +14,7 @@ struct PostView: View {
     @State var profileImage: UIImage = UIImage(named: "logo.loading")!
     @AppStorage(CurrentUserDefaults.userID) var currentUserID:String?
     var showHeaderAndFooter:Bool
+    @State var showDatailPicture = false
     
     var body: some View {
         VStack(alignment:.leading){
@@ -43,16 +44,15 @@ struct PostView: View {
             }
             
             // MARK: - IMAGE
-            NavigationLink(
-                destination: DetailPictureView(profileImage: postImage),
-                label: {
-                    Image(uiImage:postImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth:.infinity, maxHeight: showHeaderAndFooter ? 300 : nil)
-                        .clipShape(Rectangle())
-                        .edgesIgnoringSafeArea(.all)
-                })
+            Image(uiImage:postImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth:.infinity, maxHeight: showHeaderAndFooter ? 300 : nil)
+                .clipShape(Rectangle())
+                .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    showDatailPicture.toggle()
+                }
             
             if showHeaderAndFooter {
                 // MARK: - FOOTER
@@ -132,6 +132,9 @@ struct PostView: View {
         .onAppear{
             getImages()
         }
+        .fullScreenCover(isPresented: $showDatailPicture, content: {
+            DetailPictureView(postImage: postImage, profileImage: profileImage, post: post)
+        })
     }
     
     func likePost() {
