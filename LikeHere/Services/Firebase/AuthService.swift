@@ -137,5 +137,42 @@ class AuthService{
         }
         handler(true)
     }
+    
+    func updateUserDisplayName(userID: String, displayName: String, handler: @escaping (_ success: Bool) -> ()) {
+        
+        let data: [String:Any] = [
+            DatabaseUserField.displayName : displayName
+        ]
+        
+        REF_USERS.document(userID).updateData(data) { (error) in
+            if let error = error {
+                print("Error uploading user display name. \(error)")
+                handler(false)
+                return
+            } else {
+                handler(true)
+                return
+            }
+        }
+    }
+    
+    func updateUserAddress(userID: String, address: String, handler: @escaping (_ success: Bool) -> ()) {
+        
+        let data: [String:Any] = [
+            DatabaseUserField.displayAddress : address
+        ]
+        
+        REF_USERS.document(userID).updateData(data) { (error) in
+            if let error = error {
+                print("Error uploading user display name. \(error)")
+                handler(false)
+                return
+            } else {
+                handler(true)
+                return
+            }
+        }
+    }
+
 }
 

@@ -20,19 +20,19 @@ struct SettingsView: View {
     var body: some View {
         NavigationView{
             ScrollView{
-                GroupBox(label: SettingLabelView(labelText: "Profile", labelImage: "person.fill"), content: {
+                GroupBox(label: SettingLabelView(labelText: "プロフィール", labelImage: "person.fill"), content: {
                     NavigationLink(
-                        destination: SettingEditTextView(submissionText: "userDisplayName", title: "Display name", description:  "This is the description so that we can tell the user what they are doing on this screen", placeholder: "Put your display name...", profileText:  $userDisplayName),
+                        destination: SettingEditTextView(submissionText: userDisplayName , title: "ユーザーネーム", placeholder: "Put your display name...", profileText:  $userDisplayName, settingsEditTextOption: .displayName),
                         label: {
                             SettingRollView(leftIcon: "pencil", text: "Display Name", color: Color.gray)
                         })
                     NavigationLink(
-                        destination: SettingEditTextView(submissionText: "userDisplayAddress", title: "Profile Address", description: "Your address is a great place to let other users know a little about you", placeholder: "Your address here...", profileText: $userDisplayAddress),
+                        destination: SettingEditTextView(submissionText: userDisplayAddress, title: "場所", placeholder: "Your address here...", profileText: $userDisplayAddress, settingsEditTextOption: .address),
                         label: {
                             SettingRollView(leftIcon: "text.quote", text: "Address", color: Color.gray)
                         })
                     NavigationLink(
-                        destination: SettingEditImageView(title: "Profile Picrure", description: "Your profile picrture will be shown on your profile ad on your posts. Most users make it an image of themselves or of their dog!", selectedImage: userProfilePicture, profileImage: $userProfilePicture),
+                        destination: SettingEditImageView(title: "プロフィール写真", selectedImage: userProfilePicture, profileImage: $userProfilePicture),
                         label: {
                             SettingRollView(leftIcon: "photo", text: "Profile Picture", color: Color.gray)
                         })

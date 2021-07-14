@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingEditImageView: View {
     @State var title: String
-    @State var description: String
     @State var selectedImage: UIImage
     @State var sourceType: UIImagePickerController.SourceType = UIImagePickerController.SourceType.photoLibrary
     @Binding var profileImage: UIImage
@@ -20,11 +19,6 @@ struct SettingEditImageView: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 20){
-            
-            HStack{
-                Text(description)
-                Spacer(minLength: 0)
-            }
             
             Image(uiImage: selectedImage)
                 .resizable()
@@ -84,6 +78,6 @@ struct SettingEditImageView_Previews: PreviewProvider {
     @State static var image: UIImage = UIImage(named: "dog1")!
 
     static var previews: some View {
-        SettingEditImageView(title: "Title", description: "desription", selectedImage: UIImage(named: "dog1")!, profileImage: $image)
+        SettingEditImageView(title: "Title", selectedImage: UIImage(named: "dog1")!, profileImage: $image)
     }
 }

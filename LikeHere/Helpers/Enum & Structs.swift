@@ -50,4 +50,7 @@ struct CurrentUserDefaults {
     static let displayAddress = "display_address"
 }
 
-
+enum SettingsEditTextOption {
+    case displayName
+    case address
+}
