@@ -16,7 +16,7 @@ struct ProfileView: View {
     @State var userDisplayAddress = ""
     @State var userProfilePicture = UIImage(named: "logo.loading")!
     
-    var posts:PostArrayObject
+    @ObservedObject var posts:PostArrayObject
 
     
     var body: some View {

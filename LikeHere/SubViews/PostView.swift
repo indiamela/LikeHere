@@ -44,15 +44,25 @@ struct PostView: View {
             }
             
             // MARK: - IMAGE
-            Image(uiImage:postImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth:.infinity, maxHeight: showHeaderAndFooter ? 300 : nil)
-                .clipShape(Rectangle())
-                .edgesIgnoringSafeArea(.all)
-                .onTapGesture {
-                    showDatailPicture.toggle()
-                }
+            NavigationLink(
+                destination: DetailPictureView(postImage: postImage, profileImage: profileImage, post: post),
+                label: {
+                    Image(uiImage:postImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth:.infinity, maxHeight: showHeaderAndFooter ? 300 : nil)
+                        .clipShape(Rectangle())
+                        .edgesIgnoringSafeArea(.all)
+                })
+//            Image(uiImage:postImage)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .frame(maxWidth:.infinity, maxHeight: showHeaderAndFooter ? 300 : nil)
+//                .clipShape(Rectangle())
+//                .edgesIgnoringSafeArea(.all)
+//                .onTapGesture {
+//                    showDatailPicture.toggle()
+//                }
             
             if showHeaderAndFooter {
                 // MARK: - FOOTER
@@ -132,9 +142,9 @@ struct PostView: View {
         .onAppear{
             getImages()
         }
-        .fullScreenCover(isPresented: $showDatailPicture, content: {
-            DetailPictureView(postImage: postImage, profileImage: profileImage, post: post)
-        })
+//        .fullScreenCover(isPresented: $showDatailPicture, content: {
+//            DetailPictureView(postImage: postImage, profileImage: profileImage, post: post)
+//        })
     }
     
     func likePost() {
