@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ProfileHeaderView: View {
-    @State var displayName:String
+    @Binding var displayName:String
     @Binding var displayPicture: UIImage
-    @State var displayAddress: String = ""
+    @Binding var displayAddress: String
     
     var body: some View {
         VStack{
@@ -24,13 +24,13 @@ struct ProfileHeaderView: View {
             
             //Jane
             Text(displayName)
-                .font(.custom("Comfortaa Regular", size: 36))
+                .font(.custom("Comfortaa Regular", size: 30))
                 .tracking(-0.54)
                 .multilineTextAlignment(.center)
             
             //San francisco, ca
             Text(displayAddress)
-                .font(.custom("Roboto Black", size: 13))
+                .font(.custom("Roboto Black", size: 15))
                 .tracking(0.52)
                 .multilineTextAlignment(.center)
                 .textCase(.uppercase)

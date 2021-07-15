@@ -21,7 +21,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack{
-            ProfileHeaderView(displayName: userDisplayName, displayPicture: $userProfilePicture, displayAddress: userDisplayAddress)
+            ProfileHeaderView(displayName: $userDisplayName, displayPicture: $userProfilePicture, displayAddress: $userDisplayAddress)
             Divider()
             ScrollView(showsIndicators: true) {
                 RefreshControl(coordinateSpaceName: "RefreshControl", onRefresh: {
@@ -37,7 +37,6 @@ struct ProfileView: View {
             }
             .coordinateSpace(name: "RefreshControl")
         }
-        .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing:
                                 Button(action: {

@@ -13,6 +13,8 @@ struct SettingEditImageView: View {
     @State var sourceType: UIImagePickerController.SourceType = UIImagePickerController.SourceType.photoLibrary
     @Binding var profileImage: UIImage
     @Environment(\.presentationMode) var presentationMode
+    @AppStorage(CurrentUserDefaults.userID) var currentUserID: String?
+    @State var showSuccess = false
     
     @State var showImagePicker: Bool = false
     
@@ -65,10 +67,24 @@ struct SettingEditImageView: View {
         .padding()
         .frame(maxWidth: .infinity)
         .navigationBarTitle(title)
+        .alert(isPresented: $showSuccess){()->Alert in
+            return Alert(title: Text("更新しました"), message: nil, dismissButton: .default(Text("OK"),action: {
+                self.presentationMode.wrappedValue.dismiss()
+            })
+            )}
     }
     
     func saveImage(){
+        guard let userID = currentUserID else {
+            return
+        }
+        // Update the UI of the Profile
+        self.profileImage = selectedImage
         
+        // Update profileImage in database
+        ImageManager.instance.uploadProfileImage(userID: userID, image: selectedImage)
+        
+        self.showSuccess.toggle()
     }
     
     

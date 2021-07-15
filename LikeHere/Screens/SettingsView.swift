@@ -32,7 +32,7 @@ struct SettingsView: View {
                             SettingRollView(leftIcon: "text.quote", text: "Address", color: Color.gray)
                         })
                     NavigationLink(
-                        destination: SettingEditImageView(title: "プロフィール写真", selectedImage: userProfilePicture, profileImage: $userProfilePicture),
+                        destination: SettingEditImageView(title: "プロフィール画像", selectedImage: userProfilePicture, profileImage: $userProfilePicture),
                         label: {
                             SettingRollView(leftIcon: "photo", text: "Profile Picture", color: Color.gray)
                         })
