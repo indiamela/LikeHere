@@ -33,12 +33,14 @@ struct SignUpView: View {
             VStack(alignment:.center){
                 VStack{
                     //Like Here
-                    Text("Like Here")
-                        .font(.custom("Georgia-BoldItalic", size: 48))
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                    Image("logotitle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 300, alignment: .center)
                     //旅に出よう。好きな居場所を見つけよう。
-                    Text("旅に出よう。好きな居場所を見つけよう。").font(.custom("Comfortaa bold", size: 15))
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                    Text("旅に出よう。好きな居場所を見つけよう。")
+                        .font(.custom("Comfortaa bold", size: 15))
+                        .foregroundColor(Color.MyTheme.grayColor)
                         .tracking(-0.22)
                         .padding()
                 }
@@ -59,19 +61,19 @@ struct SignUpView: View {
                             .shadow(radius: 12)
                     })
                     .accentColor(.black)
-//                    Button(action: {
-//                    }, label: {
-//                        Text("Continue as a guest".uppercased())
-//                            .font(.headline)
-//                            .fontWeight(.bold)
-//                            .padding()
-//                            .frame(height: 60)
-//                            .frame(maxWidth:.infinity)
-//                            .background(Color.black)
-//                            .cornerRadius(12)
-//                            .shadow(radius: 12)
-//                    })
-//                    .accentColor(.white)
+                    Button(action: {
+                    }, label: {
+                        Text("Continue as a guest".uppercased())
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .padding()
+                            .frame(height: 60)
+                            .frame(maxWidth:.infinity)
+                            .background(Color.black)
+                            .cornerRadius(12)
+                            .shadow(radius: 12)
+                    })
+                    .accentColor(.white)
                 }
                 .alert(isPresented: $showError, content: {
                     return Alert(title: Text("Error signing in 😢"))

@@ -45,6 +45,7 @@ struct ContentView: View {
                 Text("Profile")
             }
         }
+        .background(Color.MyTheme.grayColor)
         .accentColor(Color.MyTheme.orangeColor)
     }
     

@@ -78,7 +78,7 @@ struct PostView: View {
                     .padding(.top,5)
                 }
                 
-                HStack(alignment: .bottom, spacing: 20){
+                HStack(alignment: .top, spacing: 20){
                     Button(action: {
                         //like
                         if post.likeByUser {
@@ -90,7 +90,7 @@ struct PostView: View {
                         Image(systemName: post.likeByUser ? "hand.thumbsup.fill" : "hand.thumbsup")
                             .font(.title2)
                     })
-                    .accentColor(.red)
+                    .accentColor(Color.MyTheme.orangeColor)
                     
                     Button(action: {
                         //gone
@@ -103,7 +103,7 @@ struct PostView: View {
                         Image(systemName: post.goneByUser ? "flag.fill" : "flag")
                             .font(.title2)
                     })
-                    .accentColor(.green)
+                    .accentColor(Color.MyTheme.blueColor)
                     
                     //comment
                     NavigationLink(
