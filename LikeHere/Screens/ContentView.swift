@@ -9,44 +9,49 @@ import UIKit
 import SwiftUI
 
 struct ContentView: View {
-//    @State var loggedIn: Bool = false
+    //    @State var loggedIn: Bool = false
     @AppStorage(CurrentUserDefaults.userID) var currentUserID: String?
     @AppStorage(CurrentUserDefaults.displayName) var currentDisplayName: String?
     
     
     var body: some View {
-        TabView{
-            NavigationView{
-                HomeView(posts: PostArrayObject(shuffled: true))
-            }
-            .tabItem {
-                Image(systemName: "house.fill")
-                Text("Home")
-            }
-            NavigationView{
-                DiscoverView(posts: PostArrayObject(shuffled: false))
-            }
-            .tabItem {
-                Image(systemName: "magnifyingglass")
-                Text("Discover")
-            }
-            
-            ZStack{
-                if let userID = currentUserID, let displayName = currentDisplayName {
-                    NavigationView{
-                        ProfileView(isMyProfile: true, profileUserID: userID, userDisplayName: displayName, posts: PostArrayObject(userID: userID))
+        ZStack {
+            TabView{
+                NavigationView{
+                    HomeView(posts: PostArrayObject(shuffled: true))
+                }
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("Home")
+                }
+                NavigationView{
+                    DiscoverView(posts: PostArrayObject(shuffled: false))
+                }
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Discover")
+                }
+                
+                ZStack{
+                    if let userID = currentUserID, let displayName = currentDisplayName {
+                        NavigationView{
+                            ProfileView(isMyProfile: true, profileUserID: userID, userDisplayName: displayName, posts: PostArrayObject(userID: userID))
+                        }
+                    } else {
+                        SignUpView()
                     }
-                } else {
-                    SignUpView()
+                }
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Profile")
                 }
             }
-            .tabItem {
-                Image(systemName: "person.fill")
-                Text("Profile")
+            .background(Color.MyTheme.grayColor)
+            .accentColor(Color.MyTheme.orangeColor)
+            if currentUserID == nil, currentDisplayName == nil {
+                SignUpView()
             }
         }
-        .background(Color.MyTheme.grayColor)
-        .accentColor(Color.MyTheme.orangeColor)
     }
     
 }

@@ -12,7 +12,7 @@ struct RegisterView: View {
     @State var showImagePicker: Bool = false
     @State var showError: Bool = false
 
-    @State var imageSelected: UIImage = UIImage(named: "logo")!
+    @State var imageSelected: UIImage = UIImage(named: "circle.hexagonpath.fill")!
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
 
     @Binding var displayName: String

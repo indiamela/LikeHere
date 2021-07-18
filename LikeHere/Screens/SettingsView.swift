@@ -49,14 +49,14 @@ struct SettingsView: View {
                 .padding()
 
                 
-                GroupBox(label: SettingLabelView(labelText: "Application", labelImage: "apps.iphone"), content: {
-                    Button(action: {
-                        openCustomURL(urlString: "https://www.google.com")
-                    }, label: {
-                        SettingRollView(leftIcon: "folder.fill", text: "Privacy Policy", color: Color.yellow)
-                    })
-                })
-                .padding()
+//                GroupBox(label: SettingLabelView(labelText: "Application", labelImage: "apps.iphone"), content: {
+//                    Button(action: {
+//                        openCustomURL(urlString: "https://www.google.com")
+//                    }, label: {
+//                        SettingRollView(leftIcon: "folder.fill", text: "Privacy Policy", color: Color.yellow)
+//                    })
+//                })
+//                .padding()
 
             }
         }

@@ -76,7 +76,10 @@ class ImageManager {
             handler(cachedImage)
             return
         } else {
+            Loading.defaults().start()
             path.getData(maxSize: 27 * 1024 * 1024) { (returnedImage, error) in
+                Loading.defaults().stop()
+
                 if let data = returnedImage, let image = UIImage(data: data) {
                     //success
                     imageCache.setObject(image, forKey: path)
@@ -93,6 +96,7 @@ class ImageManager {
     }
     
     private func uploadImage(path: StorageReference, image: UIImage, handler: @escaping(_ success: Bool)-> ()){
+        Loading.defaults().start()
         
         var compression: CGFloat = 1.0 //Loops down by 0.05
         let maxFileSize: Int = 240 * 240 // Maximum file size that we want to save
@@ -102,6 +106,7 @@ class ImageManager {
         guard var originalData = image.jpegData(compressionQuality: 1.0) else {
             print("Error getting data from image")
             handler(false)
+            Loading.defaults().stop()
             return
         }
         
@@ -119,6 +124,7 @@ class ImageManager {
         guard let finaleData = image.jpegData(compressionQuality: 1.0) else {
             print("Error getting data from image")
             handler(false)
+            Loading.defaults().stop()
             return
         }
         
@@ -128,7 +134,7 @@ class ImageManager {
         
         // Save data to path
         path.putData(finaleData, metadata: metadata, completion:{ (_, error) in
-                     
+            Loading.defaults().stop()
             if let error = error {
                 //Error
                 print("Error uploading image. \(error)")

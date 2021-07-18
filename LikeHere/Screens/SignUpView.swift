@@ -51,22 +51,14 @@ struct SignUpView: View {
                     Button(action: {
                         SignInWithApple.instance.startSignInWithAppleFlow(view: self)
                     }, label: {
-                        Text("Sign in / Sign up".uppercased())
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .padding()
+                        SignInWithAppleButtonCustom()
                             .frame(height: 60)
-                            .frame(maxWidth:.infinity)
-                            .background(Color.white)
-                            .cornerRadius(12)
-                            .shadow(radius: 12)
+                            .frame(maxWidth: .infinity)
                     })
-                    .accentColor(.black)
                     
                     // Google Sign in
                     Button(action: {
                         SignInWithGoogle.instance.startSignInGoogleFlow(view: self)
-                        
                     }, label: {
                         HStack{
                             Image(systemName: "globe")
@@ -74,11 +66,11 @@ struct SignUpView: View {
                         }
                         .frame(height: 60)
                         .frame(maxWidth: .infinity)
-                        .background(Color(.sRGB, red: 222/255, green: 82/255, blue: 70/255, opacity: 1.0))
+                        .background(Color.white)
                         .cornerRadius(6)
                         .font(.system(size: 25, weight: .medium, design: .default))
                     })
-                    .accentColor(Color.white)
+                    .accentColor(Color.black)
                 }
                 .alert(isPresented: $showError, content: {
                     return Alert(title: Text("Error signing in 😢"))

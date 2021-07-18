@@ -190,16 +190,17 @@ struct PostView: View {
     }
     
     func getImages() {
+        Loading.defaults().start()
         ImageManager.instance.downloadingProfileImage(userID: post.userID) { (returnedImage) in
             if let image = returnedImage {
                 self.profileImage = image
             }
         }
-        
         ImageManager.instance.downloadPostImage(postID: post.postID) { (returnedImage) in
             if let image = returnedImage {
                 self.postImage = image
             }
+            Loading.defaults().stop()
         }
     }
     
