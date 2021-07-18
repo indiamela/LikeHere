@@ -35,44 +35,6 @@ struct ProfileHeaderView: View {
                 .tracking(0.52)
                 .multilineTextAlignment(.center)
                 .textCase(.uppercase)
-                
-                
-            HStack(alignment: .center, spacing: 20, content: {
-                
-                //MARK: POSTS
-                VStack(alignment: .center, spacing: 5, content: {
-                    Text(postArray.postCountString)
-                        .font(.title2)
-                        .fontWeight(.bold)
-                    
-                    Capsule()
-                        .fill(Color.gray)
-                        .frame(width: 20, height: 2, alignment: .center)
-                    
-                    Text("Posts")
-                        .font(.callout)
-                        .fontWeight(.regular)
-                })
-                
-                //MARK: LIKES
-                VStack(alignment: .center, spacing: 5, content: {
-                    
-                    Text(postArray.likeCountString)
-                        .font(.title2)
-                        .fontWeight(.bold)
-                    
-                    Capsule()
-                        .fill(Color.gray)
-                        .frame(width: 20, height: 2, alignment: .center)
-                    
-                    Text("Likes")
-                        .font(.callout)
-                        .fontWeight(.regular)
-                })
-                
-            })
-                .padding(.top,10)
-            
         }
     }
 }

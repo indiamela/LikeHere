@@ -45,7 +45,7 @@ struct PostView: View {
             
             // MARK: - IMAGE
             NavigationLink(
-                destination: DetailPictureView(postImage: postImage, postArray: PostArrayObject(userID: post.userID), profileImage: profileImage, post: post),
+                destination: DetailPictureView(post: post, postImage: postImage, postArray: PostArrayObject(userID: post.userID), profileImage: profileImage),
                 label: {
                     Image(uiImage:postImage)
                         .resizable()
