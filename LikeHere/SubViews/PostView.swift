@@ -45,7 +45,7 @@ struct PostView: View {
             
             // MARK: - IMAGE
             NavigationLink(
-                destination: DetailPictureView(postImage: postImage, profileImage: profileImage, post: post),
+                destination: DetailPictureView(postImage: postImage, postArray: PostArrayObject(userID: post.userID), profileImage: profileImage, post: post),
                 label: {
                     Image(uiImage:postImage)
                         .resizable()
@@ -54,15 +54,6 @@ struct PostView: View {
                         .clipShape(Rectangle())
                         .edgesIgnoringSafeArea(.all)
                 })
-//            Image(uiImage:postImage)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(maxWidth:.infinity, maxHeight: showHeaderAndFooter ? 300 : nil)
-//                .clipShape(Rectangle())
-//                .edgesIgnoringSafeArea(.all)
-//                .onTapGesture {
-//                    showDatailPicture.toggle()
-//                }
             
             if showHeaderAndFooter {
                 // MARK: - FOOTER
@@ -79,31 +70,41 @@ struct PostView: View {
                 }
                 
                 HStack(alignment: .top, spacing: 20){
-                    Button(action: {
-                        //like
-                        if post.likeByUser {
-                            unlikePost()
-                        } else {
-                            likePost()
-                        }
-                    }, label: {
-                        Image(systemName: post.likeByUser ? "hand.thumbsup.fill" : "hand.thumbsup")
-                            .font(.title2)
-                    })
-                    .accentColor(Color.MyTheme.orangeColor)
+                    VStack{
+                        Button(action: {
+                            //like
+                            if post.likeByUser {
+                                unlikePost()
+                            } else {
+                                likePost()
+                            }
+                        }, label: {
+                            Image(systemName: post.likeByUser ? "hand.thumbsup.fill" : "hand.thumbsup")
+                                .font(.title2)
+                        })
+                        .accentColor(Color.MyTheme.orangeColor)
+                        Text(String(post.likeCount))
+                            .font(.caption)
+                            .foregroundColor(Color.MyTheme.orangeColor)
+                    }
                     
-                    Button(action: {
-                        //gone
-                        if post.goneByUser {
-                            notGonePost()
-                        } else {
-                            gonePost()
-                        }
-                    }, label: {
-                        Image(systemName: post.goneByUser ? "flag.fill" : "flag")
-                            .font(.title2)
-                    })
-                    .accentColor(Color.MyTheme.blueColor)
+                    VStack {
+                        Button(action: {
+                            //gone
+                            if post.goneByUser {
+                                notGonePost()
+                            } else {
+                                gonePost()
+                            }
+                        }, label: {
+                            Image(systemName: post.goneByUser ? "flag.fill" : "flag")
+                                .font(.title2)
+                        })
+                        .accentColor(Color.MyTheme.blueColor)
+                        Text(String(post.goneCount))
+                            .font(.caption)
+                            .foregroundColor(Color.MyTheme.blueColor)
+                    }
                     
                     //comment
                     NavigationLink(
@@ -142,9 +143,6 @@ struct PostView: View {
         .onAppear{
             getImages()
         }
-//        .fullScreenCover(isPresented: $showDatailPicture, content: {
-//            DetailPictureView(postImage: postImage, profileImage: profileImage, post: post)
-//        })
     }
     
     func likePost() {

@@ -9,11 +9,15 @@ import Foundation
 
 class PostArrayObject:ObservableObject{
     @Published var dataArray = [PostModel]()
+    @Published var postCountString = "0"
+    @Published var likeCountString = "0"
+    @Published var goneCountString = "0"
     
     
     init(userID: String) {
         print("GET POSTS FOR USER ID: \(userID)")
         fetchPostsForUser(userID: userID)
+        updateCounts()
     }
     
     init(shuffled: Bool) {
@@ -71,5 +75,26 @@ class PostArrayObject:ObservableObject{
             }
             self.dataArray.append(contentsOf: sortedPosts)
         }
+    }
+    
+    func updateCounts() {
+        
+        //post count
+        self.postCountString = "\(self.dataArray.count)"
+        
+        // like count
+        let likeCountArray = dataArray.map { (existtingPost) -> Int in
+            return existtingPost.likeCount
+        }
+        
+        // like count
+        let goneCountArray = dataArray.map { (existtingPost) -> Int in
+            return existtingPost.goneCount
+        }
+        
+        let sumOfLikeCountArray = likeCountArray.reduce(0, +)
+        let sumOfGoneCountArray = goneCountArray.reduce(0, +)
+        self.likeCountString = "\(sumOfLikeCountArray)"
+        self.goneCountString = "\(sumOfGoneCountArray)"
     }
 }

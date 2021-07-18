@@ -36,7 +36,7 @@ struct HomeView: View {
                 }, label: {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 50))
-                        .foregroundColor(Color.MyTheme.blueColor)
+                        .foregroundColor(.black)
                 })
                 .padding(.bottom, 30)
                 .padding(.trailing,40)

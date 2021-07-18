@@ -21,7 +21,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack{
-            ProfileHeaderView(displayName: $userDisplayName, displayPicture: $userProfilePicture, displayAddress: $userDisplayAddress)
+            ProfileHeaderView(displayName: $userDisplayName, displayPicture: $userProfilePicture, displayAddress: $userDisplayAddress, postArray: PostArrayObject(userID: profileUserID))
             Divider()
             ScrollView(showsIndicators: true) {
                 RefreshControl(coordinateSpaceName: "RefreshControl", onRefresh: {
