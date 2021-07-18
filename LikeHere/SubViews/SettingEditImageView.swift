@@ -68,6 +68,7 @@ struct SettingEditImageView: View {
         .frame(maxWidth: .infinity)
         .navigationBarTitle(title)
         .alert(isPresented: $showSuccess){()->Alert in
+            Loading.defaults().stop()
             return Alert(title: Text("更新しました"), message: nil, dismissButton: .default(Text("OK"),action: {
                 self.presentationMode.wrappedValue.dismiss()
             })
@@ -78,6 +79,7 @@ struct SettingEditImageView: View {
         guard let userID = currentUserID else {
             return
         }
+        Loading.defaults().start()
         // Update the UI of the Profile
         self.profileImage = selectedImage
         

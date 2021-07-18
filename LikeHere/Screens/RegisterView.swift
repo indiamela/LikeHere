@@ -27,8 +27,8 @@ struct RegisterView: View {
                 .resizable()
                 .frame(width: 200, height: 200, alignment: .center)
                 .padding(.bottom,30)
-            Text("What's your name?")
-                .font(.title)
+            Text("ユーザー名")
+                .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(Color.gray)
             
@@ -44,13 +44,13 @@ struct RegisterView: View {
             Button(action: {
                 showImagePicker.toggle()
             }, label: {
-                Text("Finish: Add profile picture")
+                Text("次へ")
                     .font(.headline)
                     .fontWeight(.bold)
                     .padding()
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
-                    .background(Color.gray)
+                    .background(Color.MyTheme.orangeColor)
                     .cornerRadius(12)
                     .padding(.horizontal)
             })
@@ -61,13 +61,13 @@ struct RegisterView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.yellow)
+        .background(Color.MyTheme.grayColor)
         .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $showImagePicker, onDismiss: createProfile ,content: {
             ImagePicker(imageselected: $imageSelected, sourceType: $sourceType)
         })
         .alert(isPresented: $showError) { () -> Alert in
-            return Alert (title: Text("Error creating profile😤"))
+            return Alert (title: Text("Error creating profile"))
         }
     }
     

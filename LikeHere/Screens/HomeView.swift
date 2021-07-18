@@ -11,7 +11,7 @@ struct HomeView: View {
     @ObservedObject var posts:PostArrayObject
     @State var showAlert: Bool = false
     @State var showImagePicker: Bool = false
-    @State var imageSelected: UIImage = UIImage(named: "logo.loading")!
+    @State var imageSelected: UIImage = UIImage(named: "circle.hexagonpath.fill")!
     @State var sourceType: UIImagePickerController.SourceType = .camera
     @State var showPostImageView: Bool = false
     

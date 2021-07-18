@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CommentContentView: View {
     @State var comment:CommentModel
-    @State var profileImage: UIImage = UIImage(named: "logo.loading")!
+    @State var profileImage: UIImage = UIImage(named: "circle.hexagonpath.fill")!
     var body: some View {
         HStack {
             

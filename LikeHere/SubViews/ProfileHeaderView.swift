@@ -23,13 +23,13 @@ struct ProfileHeaderView: View {
                 .clipShape(Circle())
                 .padding(.top,30)
             
-            //Jane
+            //name
             Text(displayName)
                 .font(.custom("Comfortaa Regular", size: 30))
                 .tracking(-0.54)
                 .multilineTextAlignment(.center)
             
-            //San francisco, ca
+            //address
             Text(displayAddress)
                 .font(.custom("Roboto Black", size: 15))
                 .tracking(0.52)

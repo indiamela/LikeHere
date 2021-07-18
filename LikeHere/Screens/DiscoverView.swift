@@ -10,7 +10,7 @@ import WaterfallGrid
 
 struct DiscoverView: View {
     @ObservedObject var posts: PostArrayObject
-    @State var postImage: UIImage = UIImage(named:"logo.loading")!
+    @State var postImage: UIImage = UIImage(named:"circle.hexagonpath.fill")!
     @State var selection: Int = 0
     
     var body: some View {

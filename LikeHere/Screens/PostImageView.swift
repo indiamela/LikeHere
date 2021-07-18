@@ -119,6 +119,7 @@ struct PostImageView: View {
     }
     
     func postPicture(){
+        Loading.defaults().start()
         print("POST PICTURE TO DATABASE HERE")
         guard let currentUserID = userID, let CurrentUserDisplayName = displayName else {
             print("Error getting userID & displayname")
@@ -132,6 +133,7 @@ struct PostImageView: View {
     }
     
     func getAlert() -> Alert {
+        Loading.defaults().stop()
         if successPostImage {
             return Alert(title: Text("投稿しました!"),dismissButton: .default(Text("OK"), action: {
                 presentationMode.wrappedValue.dismiss()

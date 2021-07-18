@@ -10,6 +10,8 @@
 		01991D11D8CF090E1507F961 /* Pods_LikeHereTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BB7986ABB0BC3CBC664D79 /* Pods_LikeHereTests.framework */; };
 		02103E28FCB1A5C89B3AD4B7 /* Pods_LikeHere_LikeHereUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD791A9FDB837B941AB2168 /* Pods_LikeHere_LikeHereUITests.framework */; };
 		EFF1E1FB25AC2BC4ED52FDFC /* Pods_LikeHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE737C56B7766699E3C4409 /* Pods_LikeHere.framework */; };
+		F22ABAEA26A405B300F5AE25 /* SignInWithGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22ABAE926A405B300F5AE25 /* SignInWithGoogle.swift */; };
+		F22ABAED26A4172400F5AE25 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22ABAEC26A4172400F5AE25 /* Loading.swift */; };
 		F24D067D267C127A0069DC58 /* SignInWithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D067C267C127A0069DC58 /* SignInWithApp.swift */; };
 		F24D0682267FFE260069DC58 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D0681267FFE260069DC58 /* AuthService.swift */; };
 		F24D06842680020C0069DC58 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D06832680020C0069DC58 /* RegisterView.swift */; };
@@ -72,6 +74,8 @@
 		DA683F2BEED9FDA6A3E50588 /* Pods-LikeHere-LikeHereUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere-LikeHereUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAB8B0A8F62E89721F9BCD32 /* Pods-LikeHere-LikeHereUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikeHere-LikeHereUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LikeHere-LikeHereUITests/Pods-LikeHere-LikeHereUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EBD791A9FDB837B941AB2168 /* Pods_LikeHere_LikeHereUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikeHere_LikeHereUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F22ABAE926A405B300F5AE25 /* SignInWithGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogle.swift; sourceTree = "<group>"; };
+		F22ABAEC26A4172400F5AE25 /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		F24D067C267C127A0069DC58 /* SignInWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithApp.swift; sourceTree = "<group>"; };
 		F24D067E267FFAE40069DC58 /* LikeHere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LikeHere.entitlements; sourceTree = "<group>"; };
 		F24D0681267FFE260069DC58 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F24D067C267C127A0069DC58 /* SignInWithApp.swift */,
+				F22ABAE926A405B300F5AE25 /* SignInWithGoogle.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			children = (
 				F24D06862682A03D0069DC58 /* Extensions.swift */,
 				F24D06882682A06F0069DC58 /* Enum & Structs.swift */,
+				F22ABAEC26A4172400F5AE25 /* Loading.swift */,
 				F2B988A4269BAF0400D32612 /* RefleshControll.swift */,
 			);
 			path = Helpers;
@@ -611,6 +617,7 @@
 				F2A9F22B268A875700D528F7 /* DataService.swift in Sources */,
 				F2F45CEB2675CA6A00604465 /* ProfileHeaderView.swift in Sources */,
 				F24D06842680020C0069DC58 /* RegisterView.swift in Sources */,
+				F22ABAED26A4172400F5AE25 /* Loading.swift in Sources */,
 				F2BF23EF267028E600FDF33A /* PostModel.swift in Sources */,
 				F2F45CED2675D6C900604465 /* SettingsView.swift in Sources */,
 				F2B988A5269BAF0500D32612 /* RefleshControll.swift in Sources */,
@@ -620,6 +627,7 @@
 				F2BF23F726717E2F00FDF33A /* CommentModel.swift in Sources */,
 				F24D067D267C127A0069DC58 /* SignInWithApp.swift in Sources */,
 				F2F45CF12675DAF600604465 /* SettingEditTextView.swift in Sources */,
+				F22ABAEA26A405B300F5AE25 /* SignInWithGoogle.swift in Sources */,
 				F2F45CF52675E1CE00604465 /* SettingEditImageView.swift in Sources */,
 				F24D06872682A03D0069DC58 /* Extensions.swift in Sources */,
 				F2F45CEF2675D7EB00604465 /* SettingLabelView.swift in Sources */,

@@ -10,7 +10,7 @@ import SwiftUI
 struct CommentsView: View {
     @State var submissionText = ""
     @State var commentsArray = [CommentModel]()
-    @State var profilePicture = UIImage(named: "logo.loading")
+    @State var profilePicture = UIImage(named:"circle.hexagonpath.fill")!
     @AppStorage(CurrentUserDefaults.userID) var currentUserID: String?
     @AppStorage(CurrentUserDefaults.displayName) var currentDisplayName: String?
     
@@ -27,7 +27,7 @@ struct CommentsView: View {
             Spacer()
             Divider()
             HStack{
-                Image(uiImage: profilePicture!)
+                Image(uiImage: profilePicture)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 40, height: 40, alignment: .center)

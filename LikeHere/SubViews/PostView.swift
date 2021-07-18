@@ -10,8 +10,8 @@ import SwiftUI
 struct PostView: View {
     
     @State var post: PostModel
-    @State var postImage: UIImage = UIImage(named:"logo.loading")!
-    @State var profileImage: UIImage = UIImage(named: "logo.loading")!
+    @State var postImage: UIImage = UIImage(named:"circle.hexagonpath.fill")!
+    @State var profileImage: UIImage = UIImage(named: "circle.hexagonpath.fill")!
     @AppStorage(CurrentUserDefaults.userID) var currentUserID:String?
     var showHeaderAndFooter:Bool
     @State var showDatailPicture = false

@@ -14,7 +14,7 @@ struct ProfileView: View {
     var profileUserID: String
     @State var userDisplayName: String
     @State var userDisplayAddress = ""
-    @State var userProfilePicture = UIImage(named: "logo.loading")!
+    @State var userProfilePicture = UIImage(named: "circle.hexagonpath.fill")!
     
     @ObservedObject var posts:PostArrayObject
 
